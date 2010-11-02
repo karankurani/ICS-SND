@@ -1,4 +1,4 @@
-package ICS.SND.Entities;
+package ICS.SND.Interfaces;
 
 import java.util.List;
 

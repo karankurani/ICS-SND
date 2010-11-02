@@ -1,13 +1,15 @@
-package ICS.SND.Entities;
+package ICS.SND.Tests;
 
 import java.util.List;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
+import ICS.SND.Interfaces.IEntry;
+import ICS.SND.Interfaces.IReader;
+import ICS.SND.Utilities.DBLPEntryReader;
 
-import org.junit.Assert;
 
-
-public class PersonTest extends TestCase 
+public class DBLPEntryReaderTest extends TestCase 
 {
 	public void testItRuns()
 	{
@@ -15,7 +17,7 @@ public class PersonTest extends TestCase
 	}
 	public void testEntryReader()
 	{
-		IReader reader = new DBLPEntryReader("testFiles/test.xml");
+		IReader reader = new DBLPEntryReader("../ICS-SND/src/ICS/SND/Tests/test.xml");
 		List<IEntry> entries = reader.List();
 		Assert.assertTrue(entries.size() > 0);
 		for (IEntry entry : entries)

@@ -1,4 +1,4 @@
-package ICS.SND.Entities;
+package ICS.SND.Utilities;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.List;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
+
+import ICS.SND.Interfaces.IEntry;
+import ICS.SND.Interfaces.IReader;
 
 public class DBLPEntryReader implements IReader {
 	private String filePath;
@@ -20,9 +23,8 @@ public class DBLPEntryReader implements IReader {
 		XMLReader parser = null;
 		try {
 			parser = XMLReaderFactory.createXMLReader();
-			parser.setContentHandler(new EntryHandler());
+			parser.setContentHandler(new EntryHandler(retVal));
 			parser.parse(filePath);
-			retVal = parser.
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

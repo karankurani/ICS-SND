@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE dblp SYSTEM "testFiles/dblp.dtd">
+<!DOCTYPE dblp SYSTEM "dblp.dtd">
 <dblp>
 <incollection mdate="2002-01-03" key="books/acm/kim95/AnnevelinkACFHK95">
 <author>Jurgen Annevelink</author>
