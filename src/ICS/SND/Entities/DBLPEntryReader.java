@@ -1,37 +1,33 @@
 package ICS.SND.Entities;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
-import org.jdom.*;
-import org.jdom.input.SAXBuilder;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 public class DBLPEntryReader implements IReader {
+	private String filePath;
 
 	public DBLPEntryReader(String filePath){
-			try {
-				SAXBuilder builder = new SAXBuilder();
-			    Document document = builder.build(new FileReader(filePath));
-			    Element root = document.getRootElement();
-			    root = root;
-			} 
-			catch (FileNotFoundException e){
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JDOMException e){
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e){
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		this.filePath = filePath;
 	}
 
 	@Override
 	public java.util.List<IEntry> List() {
-		// TODO Auto-generated method stub
-		return null;
+		List<IEntry> retVal = null;
+		XMLReader parser = null;
+		try {
+			parser = XMLReaderFactory.createXMLReader();
+			parser.setContentHandler(new EntryHandler());
+			parser.parse(filePath);
+			retVal = parser.
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return retVal;
 	}
-
 }
