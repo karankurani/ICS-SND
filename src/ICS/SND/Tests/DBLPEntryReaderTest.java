@@ -4,17 +4,18 @@ import java.util.List;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import org.junit.BeforeClass;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IReader;
 import ICS.SND.Utilities.DBLPEntryReader;
 
-
 public class DBLPEntryReaderTest extends TestCase 
 {
-	public void testItRuns()
-	{
-		Assert.assertTrue(true);
-	}
+	@BeforeClass
+    public static void oneTimeSetUp() {
+		
+    }
+
 	public void testEntryReader()
 	{
 		IReader reader = new DBLPEntryReader("../ICS-SND/src/ICS/SND/Tests/test.xml");

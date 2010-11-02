@@ -23,7 +23,7 @@ public class DBLPEntryReader implements IReader {
 		XMLReader parser = null;
 		try {
 			parser = XMLReaderFactory.createXMLReader();
-			parser.setContentHandler(new EntryHandler(retVal));
+			parser.setContentHandler(new EntryHandler());
 			parser.parse(filePath);
 		} catch (SAXException e) {
 			e.printStackTrace();
