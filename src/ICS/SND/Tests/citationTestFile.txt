@@ -1,0 +1,54 @@
+#*Requirements-based product line engineering.
+#@Mike Mannion,Hermann Kaindl
+#t2001
+#cESEC / SIGSOFT FSE
+#index601225
+#%366079
+#%1071054
+#%1071080
+#%1071244
+#%753231
+#!Reuse and requirements are very important for efficient and successful systems development. This tutorial presents the experiences of requirements reuse using a Method for Requirements Authoring and Management (MRAM). MRAM is a method for establishing and selecting from product line requirements. A product line is a group of products within the same market segment e.g. mobile phones. TRAM (Tool for Requirements Authoring and Management) is a software tool to support MRAM that utilises current proven office technology (MS-Word, MS-Access). The tutorial presents the results of MRAM/TRAM as it has been applied to product line engineering of a real-world application.
+
+#*The usability problem for home appliances: engineers caused it, engineers can fix it!
+#@Joe Marks
+#t2004
+#cSIGSOFT FSE
+#index601226
+#!Ordinary people already have great difficulty using the advanced features of digitally enabled household appliances, and the problem grows worse with time as more customization and programming features are added. This usability problem cannot be solved using the tiny displays and limited control buttons typically found on such devices. In this talk I will describe a new type of collaborative interface in which the appliance actively helps the user, especially with complex features that are only used occasionally. This interface provides a consistent and pervasive mechanism for answering the who-what-where-when-why-how questions that often cause users to consult a manual, call a help line, or simply give up. A crucial aspect of the interface architecture is the use of home networking to share a physically large and computationally powerful display among multiple appliances. Why is this a relevant talk for a software-engineering conference? A contributing factor to the usability crisis is the dominance of engineers in product design at many companies. The development of more-usable devices requires a broader conception of engineering that includes interaction design, artificial intelligence, and human factors - at a minimum. I will describe how these disciplines can complement traditional electrical and software engineering in the context of attempting to solve a commercially significant real-world problem.
+
+#*CAIS: Collaborative Asynchronous Inspection of Software.
+#@Vahid Mashayekhi,Chris Feulner,John Riedl
+#t1994
+#cSIGSOFT FSE
+#index601227
+#%770156
+#%911948
+#%121669
+#%121582
+#%1120099
+#%806229
+#%771472
+#%771744
+#%121835
+#%121736
+#%773995
+#%121889
+#%1113448
+#%776280
+#%121696
+#!Many software engineering tasks have a synchronous component that requires the participants to assemble together at the same time and place. This approach is expensive in terms of traveling, scheduling and human resources. Existing computer tools mitigate these constraints by adding structure to the meeting, providing on-line document support, and distributing the participants over geographic boundaries. The constraint remains, however, that all participants participate at the same timeWe propose relaxing the time constraint in software engineering tasks to resolve issues non-concurrently, in effect reducing (and in some cases eliminating) the need for the synchronous meeting. We hypothesize that support for asynchrony will enable software engineering teams to work together as effectively in different times as in same time.We have chosen software inspection as our candidate software engineering task because it is well-understood, highly-structured, and widely-practiced. We have designed and developed a Collaborative Asynchronous Inspection of Software (CAIS) meeting prototype that supports the meeting part of inspection. CAIS allows participants to effectively "meet" even when separated by time zones and working schedules. We have conducted a pilot study comparing the manual and CAIS meetings and present our results and lessons learned.
+
+#*Applying Design Patterns to Decision Tree Learning System.
+#@Gou Masuda,Norihiro Sakamoto,Kazuo Ushijima
+#t1998
+#cSIGSOFT FSE
+#index601228
+#%2138
+#%335539
+#%2358
+#%334591
+#%1209581
+#%521804
+#%1009791
+#!In this paper we describe an application of design patterns to the development of a decision tree learning system. A decision tree learning system constructs a classifier as a form of tree from a given data set. It is required to be as flexible as possible when used in real application domains. Design patterns help us construct reusable software components and construct flexible and extensible systems. The approach employed in this study is as follows. First we examine several decision tree learning systems and identify hot-spots in the systems at points we anticipate future demand for modification and extension of the system. Second we determine which design pattern to apply to each hot-spot. We evaluate the extensibility of the system experimentally. Our experience shows that using design patterns in object-oriented software design allows the easy construction of flexible systems.

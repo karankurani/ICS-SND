@@ -8,7 +8,7 @@ public class Processor implements IProcessor {
     IDataProvider provider;
     
     public Processor() {
-        provider = new DataProvider();
+        provider = new HibernateDataProvider();
     }
 
     @Override

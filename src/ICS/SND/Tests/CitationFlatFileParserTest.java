@@ -11,7 +11,7 @@ import ICS.SND.Utilities.DBLPEntryReader;
 import ICS.SND.Utilities.HibernateDataProvider;
 import ICS.SND.Utilities.Processor;
 
-public class DBLPEntryReaderTest extends TestCase {
+public class CitationFlatFileParserTest extends TestCase {
     static IDataProvider provider;
 
     @BeforeClass

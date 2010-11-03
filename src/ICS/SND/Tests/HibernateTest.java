@@ -8,7 +8,7 @@ import org.junit.Test;
 import ICS.SND.Entities.Entry;
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
-import ICS.SND.Utilities.DataProvider;
+import ICS.SND.Utilities.HibernateDataProvider;
 
 public class HibernateTest extends TestCase {
     static IDataProvider provider;
@@ -21,10 +21,26 @@ public class HibernateTest extends TestCase {
     @Test
     public void testHibernate() {
         System.out.println("Starting Test");
-        provider = new DataProvider();
+        provider = new HibernateDataProvider();
         IEntry entry = new Entry();
         entry.setTitle("My Title");
         provider.Save(entry);
+    }
+    
+    @Test
+    public void testLoadByTitle(){
+    	provider = new HibernateDataProvider();
+    	IEntry entry = provider.LoadByTitle("Active Database Systems.");
+    	System.out.println(entry.toString());
+    }
+    
+    @Test
+    public void testUpdateByTitle(){
+    	provider = new HibernateDataProvider();
+    	IEntry entry = provider.LoadByTitle("Active Database Systems.");
+    	entry.setTitle("Jason Amazoner");
+    	provider.Update(entry);
+    	System.out.println(entry.toString());
     }
     
 //    @Test

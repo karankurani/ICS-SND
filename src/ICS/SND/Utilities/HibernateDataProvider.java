@@ -2,12 +2,13 @@ package ICS.SND.Utilities;
 
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.*;
 
 import ICS.SND.Entities.Entry;
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
 
-public class DataProvider implements IDataProvider {
+public class HibernateDataProvider implements IDataProvider {
 
     @Override
     public void Save(IEntry currentEntry) {
@@ -34,5 +35,26 @@ public class DataProvider implements IDataProvider {
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public IEntry LoadByTitle(String title) {
+		IEntry entry=null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query q = session.createQuery("from Entry where title=:title");
+		q.setParameter("title", title);
+		entry = (IEntry) q.uniqueResult();
+		session.close();
+		return entry;
+	}
+
+	@Override
+	public void Update(IEntry currentEntry) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(currentEntry);
+        session.flush();
+        tx.commit();
+        session.close();
+	}
 
 }
