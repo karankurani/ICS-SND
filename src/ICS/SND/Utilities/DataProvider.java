@@ -4,7 +4,6 @@ import org.hibernate.classic.Session;
 
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
-import ICS.SND.Entities.*;
 
 public class DataProvider implements IDataProvider {
 
@@ -14,6 +13,18 @@ public class DataProvider implements IDataProvider {
         session.save(currentEntry);
         session.flush();
         session.close();
+    }
+
+    @Override
+    public IEntry Load(int id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public java.util.List<IEntry> List() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
