@@ -4,6 +4,7 @@ import org.hibernate.classic.Session;
 
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
+import ICS.SND.Entities.*;
 
 public class DataProvider implements IDataProvider {
 

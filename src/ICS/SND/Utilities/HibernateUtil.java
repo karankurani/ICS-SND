@@ -3,14 +3,18 @@ package ICS.SND.Utilities;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import ICS.SND.Entities.Entry;
+
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         try {
-            // Create the SessionFactory from hibernate.cfg.xml
-            return new Configuration().configure().buildSessionFactory();
+            Configuration config = new Configuration().configure("hibernate.cfg.xml");
+            config.addPackage("ICS.SND.Entities").addAnnotatedClass(Entry.class);
+            SessionFactory factory = config.buildSessionFactory();
+            return factory;
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);

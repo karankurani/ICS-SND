@@ -3,8 +3,7 @@ package ICS.SND.Entities;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
+import javax.persistence.Entity;
 
 import ICS.SND.Interfaces.IEntry;
 
