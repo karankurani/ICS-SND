@@ -10,22 +10,20 @@ import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Utilities.DataProvider;
 
-public class HibernateTest extends TestCase 
-{
-	static IDataProvider provider;
-	
-	@BeforeClass
+public class HibernateTest extends TestCase {
+    static IDataProvider provider;
+
+    @BeforeClass
     public static void oneTimeSetUp() {
-		System.out.println("One Time Setup");
+        System.out.println("One Time Setup");
     }
 
-	@Test
-	public void testHibernate()
-	{
-		System.out.println("Starting Test");
-		provider = new DataProvider();
-		IEntry entry = new Entry();
-		entry.setTitle("My Title");
-		provider.Save(entry);
-	}
+    @Test
+    public void testHibernate() {
+        System.out.println("Starting Test");
+        provider = new DataProvider();
+        IEntry entry = new Entry();
+        entry.setTitle("My Title");
+        provider.Save(entry);
+    }
 }

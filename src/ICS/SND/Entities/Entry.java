@@ -10,120 +10,121 @@ import ICS.SND.Interfaces.IEntry;
 
 @Entity
 public class Entry implements IEntry {
-	private int id;
-	private String author;
-	private String booktitle;
-	private String entry;
-	private String isbn;
-	private String pages;
-	private String publisher;
-	private String title;
-	private String url;
-	private String year;
+    private int id;
+    private String author;
+    private String booktitle;
+    private String entry;
+    private String isbn;
+    private String pages;
+    private String publisher;
+    private String title;
+    private String url;
+    private String year;
 
-	@Override
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Override
-	public int getId() {
-		return id;
-	}
-	
-	@Override
-	public String getAuthor() {
-		return author;
-	}
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	@Override
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Override
+    public int getId() {
+        return id;
+    }
 
-	@Override
-	public String getBooktitle() {
-		return booktitle;
-	}
+    @Override
+    public String getAuthor() {
+        return author;
+    }
 
-	@Override
-	public void setBooktitle(String booktitle) {
-		this.booktitle = booktitle;
-	}
+    @Override
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	@Override
-	public String getEntry() {
-		return entry;
-	}
+    @Override
+    public String getBooktitle() {
+        return booktitle;
+    }
 
-	@Override
-	public void setEntry(String entry) {
-		this.entry = entry;
-	}
+    @Override
+    public void setBooktitle(String booktitle) {
+        this.booktitle = booktitle;
+    }
 
-	@Override
-	public String getIsbn() {
-		return isbn;
-	}
+    @Override
+    public String getEntry() {
+        return entry;
+    }
 
-	@Override
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
+    @Override
+    public void setEntry(String entry) {
+        this.entry = entry;
+    }
 
-	@Override
-	public String getPages() {
-		return pages;
-	}
+    @Override
+    public String getIsbn() {
+        return isbn;
+    }
 
-	@Override
-	public void setPages(String pages) {
-		this.pages = pages;
-	}
+    @Override
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-	@Override
-	public String getPublisher() {
-		return publisher;
-	}
+    @Override
+    public String getPages() {
+        return pages;
+    }
 
-	@Override
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
+    @Override
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
 
-	@Override
-	public String getUrl() {
-		return url;
-	}
+    @Override
+    public String getPublisher() {
+        return publisher;
+    }
 
-	@Override
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    @Override
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 
-	@Override
-	public String getYear() {
-		return year;
-	}
+    @Override
+    public String getUrl() {
+        return url;
+    }
 
-	@Override
-	public void setYear(String year) {
-		this.year = year;
-	}
+    @Override
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	@Override
-	public String getTitle() {
-		return this.title;
-	}
+    @Override
+    public String getYear() {
+        return year;
+    }
 
-	@Override
-	public void setTitle(String val) {
-		this.title = val;
-	}
+    @Override
+    public void setYear(String year) {
+        this.year = year;
+    }
 
-	@Override
-	public String toString() {
-		return title;
-	}
+    @Override
+    public String getTitle() {
+        return this.title;
+    }
+
+    @Override
+    public void setTitle(String val) {
+        this.title = val;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }

@@ -10,23 +10,23 @@ import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
 
 public class DBLPEntryReader implements IReader {
-	private String filePath;
+    private String filePath;
 
-	public DBLPEntryReader(String filePath) {
-		this.filePath = filePath;
-	}
+    public DBLPEntryReader(String filePath) {
+        this.filePath = filePath;
+    }
 
-	@Override
-	public void Process(IProcessor processor) {
-		XMLReader parser = null;
-		try {
-			parser = XMLReaderFactory.createXMLReader();
-			parser.setContentHandler(new EntryHandler(processor));
-			parser.parse(filePath);
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    @Override
+    public void Process(IProcessor processor) {
+        XMLReader parser = null;
+        try {
+            parser = XMLReaderFactory.createXMLReader();
+            parser.setContentHandler(new EntryHandler(processor));
+            parser.parse(filePath);
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

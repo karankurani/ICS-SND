@@ -11,19 +11,18 @@ import ICS.SND.Utilities.DBLPEntryReader;
 import ICS.SND.Utilities.DataProvider;
 import ICS.SND.Utilities.Processor;
 
-public class DBLPEntryReaderTest extends TestCase 
-{
-	static IDataProvider provider;
-	
-	@BeforeClass
+public class DBLPEntryReaderTest extends TestCase {
+    static IDataProvider provider;
+
+    @BeforeClass
     public static void oneTimeSetUp() {
-		provider = new DataProvider();
+        provider = new DataProvider();
     }
 
-	public void testEntryReader()
-	{
-		IProcessor processor = new Processor();
-		IReader reader = new DBLPEntryReader("../ICS-SND/src/ICS/SND/Tests/test.xml");		
-		reader.Process(processor);
-	}
+    public void testEntryReader() {
+        IProcessor processor = new Processor();
+        IReader reader = new DBLPEntryReader(
+                "../ICS-SND/src/ICS/SND/Tests/test.xml");
+        reader.Process(processor);
+    }
 }
