@@ -18,5 +18,7 @@
 	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/test/slf4j-log4j12.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/slf4j-api.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/test/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/optional/c3p0/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
