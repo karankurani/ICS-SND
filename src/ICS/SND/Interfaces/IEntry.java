@@ -49,12 +49,12 @@ public interface IEntry {
 
 	public void setAbstractText(String abstractText);
 
-	public String getIndex();
+	public String getIndexNumber();
 
-	public void setIndex(String index);
+	public void setIndexNumber(String index);
 
-	public List<Entry> getReferences();
+	public String getReferenceIndexNumbers();
 
-	public void setReferences(List<Entry> references);
+	public void setReferenceIndexNumbers(String references);
 
 }

@@ -34,14 +34,14 @@ public class HibernateTest extends TestCase {
     	System.out.println(entry.toString());
     }
     
-    @Test
-    public void testUpdateByTitle(){
-    	provider = new HibernateDataProvider();
-    	IEntry entry = provider.LoadByTitle("Active Database Systems.");
-    	entry.setTitle("Jason Amazoner");
-    	provider.Update(entry);
-    	System.out.println(entry.toString());
-    }
+//    @Test
+//    public void testUpdateByTitle(){
+//    	provider = new HibernateDataProvider();
+//    	IEntry entry = provider.LoadByTitle("Active Database Systems.");
+//    	entry.setTitle("Jason Amazoner");
+//    	provider.Update(entry);
+//    	System.out.println(entry.toString());
+//    }
     
 //    @Test
 //    public void testLoadEntry(){

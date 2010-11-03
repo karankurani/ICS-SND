@@ -1,9 +1,6 @@
 package ICS.SND.Entities;
 
-import java.util.List;
-
 import javax.persistence.*;
-
 import ICS.SND.Interfaces.IEntry;
 
 @Entity
@@ -19,8 +16,8 @@ public class Entry implements IEntry {
 	private String url;
 	private String year;
 	private String abstractText;
-	private String index;
-	private List<Entry> references;
+	private String indexNumber;
+	private String referenceIndexNumbers;
 
 	@Override
 	public void setId(int id) {
@@ -45,25 +42,23 @@ public class Entry implements IEntry {
 	}
 
 	@Override
-	public String getIndex() {
-		return index;
+	public String getIndexNumber() {
+		return indexNumber;
 	}
 
 	@Override
-	public void setIndex(String index) {
-		this.index = index;
+	public void setIndexNumber(String index) {
+		this.indexNumber = index;
 	}
 
 	@Override
-	@ManyToMany
-	@JoinTable (name="entry_entry", joinColumns =  {@JoinColumn (name="index") }, inverseJoinColumns = {@JoinColumn (name = "references") } )
-	public List<Entry> getReferences() {
-		return references;
+	public String getReferenceIndexNumbers() {
+		return referenceIndexNumbers;
 	}
 
 	@Override
-	public void setReferences(List<Entry> references) {
-		this.references = references;
+	public void setReferenceIndexNumbers(String references) {
+		this.referenceIndexNumbers = references;
 	}
 
 	@Override
