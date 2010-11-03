@@ -1,0 +1,6 @@
+Object SQL - A Language for the Design and Implementation of Object Databases.
+
+OQL[C++]: Extending C++ with an Object Query Capability.
+
+Transaction Management in Multidatabase Systems.
+

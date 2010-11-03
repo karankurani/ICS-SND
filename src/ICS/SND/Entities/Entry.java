@@ -1,5 +1,6 @@
 package ICS.SND.Entities;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -113,6 +114,7 @@ public class Entry implements IEntry {
     }
 
     @Override
+    @Column(length=1024)
     public String getTitle() {
         return this.title;
     }
@@ -124,6 +126,6 @@ public class Entry implements IEntry {
 
     @Override
     public String toString() {
-        return title;
+        return title + " " + author;
     }
 }

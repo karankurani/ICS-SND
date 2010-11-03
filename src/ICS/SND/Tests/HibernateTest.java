@@ -26,4 +26,14 @@ public class HibernateTest extends TestCase {
         entry.setTitle("My Title");
         provider.Save(entry);
     }
+    
+//    @Test
+//    public void testLoadEntry(){
+//    	provider = new DataProvider();
+//    	for(int i=4;i<11;i++)
+//    	{
+//    		IEntry entry = provider.Load(i);
+//    		System.out.println(entry.getTitle());
+//    	}
+//    }
 }

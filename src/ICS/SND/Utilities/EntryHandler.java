@@ -62,6 +62,7 @@ public class EntryHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length) {
         if (entry) {
             currentEntry = new Entry();
+            currentEntry.setAuthor("");
             entry = false;
         }
         if (title) {
@@ -69,8 +70,16 @@ public class EntryHandler extends DefaultHandler {
             title = false;
         }
         if (author) {
-            currentEntry.setAuthor(new String(ch, start, length));
-            author = false;
+        	String currentAuthor=currentEntry.getAuthor();
+        	if(currentAuthor=="")
+        	{
+        		currentEntry.setAuthor(new String(ch, start, length));
+        	}
+        	else
+        	{
+        		currentEntry.setAuthor(currentAuthor + "|" + new String(ch, start, length));
+        	}
+        	author = false;
         }
         if (publisher) {
             currentEntry.setPublisher(new String(ch, start, length));
