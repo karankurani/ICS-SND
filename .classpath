@@ -2,10 +2,19 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQLDriver"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Junit"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDOM"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/jrm425/Desktop/Eclipse workspace/ICS-SND/lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/bytecode/cglib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/lib/required/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
