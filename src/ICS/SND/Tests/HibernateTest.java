@@ -20,7 +20,7 @@ public class HibernateTest extends TestCase
     }
 
 	@Test
-	public void testEntryReader()
+	public void testHibernate()
 	{
 		System.out.println("Starting Test");
 		provider = new DataProvider();
