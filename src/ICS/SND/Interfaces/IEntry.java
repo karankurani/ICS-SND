@@ -1,9 +1,5 @@
 package ICS.SND.Interfaces;
 
-import java.util.List;
-
-import ICS.SND.Entities.Entry;
-
 public interface IEntry {
     public void setId(int id);
 

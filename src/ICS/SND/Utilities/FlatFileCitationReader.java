@@ -3,22 +3,25 @@ package ICS.SND.Utilities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+import ICS.SND.Interfaces.IDataProvider;
+import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
 
 public class FlatFileCitationReader implements IReader {
 	private String filePath;
+	private IDataProvider provider;
 
     public FlatFileCitationReader(String filePath) {
         this.filePath = filePath;
+        this.provider = new HibernateDataProvider();
     }
     
 	@Override
 	public void Process(IProcessor processor) {
 		BufferedReader input;
+		IEntry currentEntry=null;
 		try {
 			input = new BufferedReader(new FileReader(this.filePath));
 			StringBuilder docBuf = new StringBuilder();
@@ -26,13 +29,21 @@ public class FlatFileCitationReader implements IReader {
 			
 			while((line = input.readLine()) != null)
 			{
-				if(line.length()==0 && docBuf.length()>0)
+				if(line.contains("#*"))
 				{
-					docBuf = new StringBuilder();
-	            }
-				else
+					 currentEntry = provider.LoadByTitle(line.replaceAll("#*", "").trim());
+				}
+				else if(line.contains("#%"))
 				{
-					docBuf.append(line);
+					currentEntry.setReferenceIndexNumbers(currentEntry.getReferenceIndexNumbers() + "|" + line.replaceAll("#%", "").trim());
+				}
+				else if(line.contains("#!"))
+				{
+					currentEntry.setAbstractText(line.replaceAll("#!", ""));
+				}
+				else if(line.length()==0 && currentEntry!=null)
+				{
+					provider.Update(currentEntry);
 				}
 			}
 		}

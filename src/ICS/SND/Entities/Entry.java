@@ -62,6 +62,7 @@ public class Entry implements IEntry {
 	}
 
 	@Override
+	@Column(length = 1024)
 	public String getAuthor() {
 		return author;
 	}
