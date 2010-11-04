@@ -52,3 +52,7 @@
 #%521804
 #%1009791
 #!In this paper we describe an application of design patterns to the development of a decision tree learning system. A decision tree learning system constructs a classifier as a form of tree from a given data set. It is required to be as flexible as possible when used in real application domains. Design patterns help us construct reusable software components and construct flexible and extensible systems. The approach employed in this study is as follows. First we examine several decision tree learning systems and identify hot-spots in the systems at points we anticipate future demand for modification and extension of the system. Second we determine which design pattern to apply to each hot-spot. We evaluate the extensibility of the system experimentally. Our experience shows that using design patterns in object-oriented software design allows the easy construction of flexible systems.
+
+#*Active Database Systems.
+#!Karan
+

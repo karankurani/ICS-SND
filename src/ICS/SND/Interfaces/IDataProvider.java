@@ -8,5 +8,5 @@ public interface IDataProvider {
     void Update(IEntry currentEntry);
     IEntry LoadByTitle(String title);
     IEntry Load(int id);
-    List<IEntry> List();
+    List<IEntry> List(String title);
 }

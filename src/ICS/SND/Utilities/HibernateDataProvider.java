@@ -1,5 +1,7 @@
 package ICS.SND.Utilities;
 
+import java.util.*;
+
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.hibernate.*;
@@ -31,9 +33,19 @@ public class HibernateDataProvider implements IDataProvider {
     }
 
     @Override
-    public java.util.List<IEntry> List() {
-        // TODO Auto-generated method stub
-        return null;
+    public java.util.List<IEntry> List(String title) {
+    	List<IEntry> list = new ArrayList<IEntry>();
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+		Query q = session.createQuery("from Entry where title=:title");
+		q.setParameter("title", title);
+		list = (java.util.List<IEntry>) q.list();
+		session.close();
+		if(list.size() > 0){
+			return list;
+		}
+		else{
+			return null;
+		}
     }
 
 	@Override

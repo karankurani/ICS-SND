@@ -32,6 +32,7 @@ public class Entry implements IEntry {
 	}
 	
 	@Override
+	@Column(length = 1024)
 	public String getAbstractText() {
 		return abstractText;
 	}
@@ -52,6 +53,7 @@ public class Entry implements IEntry {
 	}
 
 	@Override
+	@Column(length = 1024)
 	public String getReferenceIndexNumbers() {
 		return referenceIndexNumbers;
 	}
@@ -155,11 +157,6 @@ public class Entry implements IEntry {
 
 	@Override
 	public String toString() {
-		String s="";
-		s = this.title + " " + this.author;
-		if(this.abstractText!= null)	{
-			s = s + this.abstractText;
-		}
-		return s;
+		return this.indexNumber+ " [Title]"+ this.title + " [Authors]" + this.author + " [Abstract]" + this.abstractText + " [References]" + this.referenceIndexNumbers;
 	}
 }
