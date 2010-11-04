@@ -24,7 +24,6 @@ public class FlatFileCitationReader implements IReader {
 		IEntry currentEntry=null;
 		try {
 			input = new BufferedReader(new FileReader(this.filePath));
-			StringBuilder docBuf = new StringBuilder();
 			String line="";
 			
 			while((line = input.readLine()) != null)

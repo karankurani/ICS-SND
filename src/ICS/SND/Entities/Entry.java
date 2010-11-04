@@ -155,6 +155,11 @@ public class Entry implements IEntry {
 
 	@Override
 	public String toString() {
-		return title + " " + author;
+		String s="";
+		s = this.title + " " + this.author;
+		if(this.abstractText!= null)	{
+			s = s + this.abstractText;
+		}
+		return s;
 	}
 }

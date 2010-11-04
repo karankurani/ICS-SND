@@ -18,19 +18,19 @@ public class HibernateTest extends TestCase {
         System.out.println("One Time Setup");
     }
 
-    @Test
-    public void testHibernate() {
-        System.out.println("Starting Test");
-        provider = new HibernateDataProvider();
-        IEntry entry = new Entry();
-        entry.setTitle("My Title");
-        provider.Save(entry);
-    }
+//    @Test
+//    public void testHibernate() {
+//        System.out.println("Starting Test");
+//        provider = new HibernateDataProvider();
+//        IEntry entry = new Entry();
+//        entry.setTitle("My Title");
+//        provider.Save(entry);
+//    }
     
     @Test
     public void testLoadByTitle(){
     	provider = new HibernateDataProvider();
-    	IEntry entry = provider.LoadByTitle("Active Database Systems.");
+    	IEntry entry = provider.LoadByTitle("My Title");
     	System.out.println(entry.toString());
     }
     
