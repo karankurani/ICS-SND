@@ -35,7 +35,7 @@ public class HadoopFlatFormProvider {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			for(String referenceID : referenceIDs)
 			{
-				Query q = session.createQuery("from Entry where indexNumber='" + referenceID + "' and bookTitle is NULL");
+				Query q = session.createQuery("from Entry where indexNumber='" + referenceID + "'");
 				entry = (IEntry) q.uniqueResult();
 				if(entry!=null){
 					referenceStringBuilder.append(entry.getTitle() + " ");	
