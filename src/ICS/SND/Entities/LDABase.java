@@ -9,7 +9,7 @@ import java.util.*;
 public class LDABase 
 {
 	
-	int minTokenCount = 1;
+	int minTokenCount = 3;
     short numTopics = 2;
     double topicPrior = 0.1;
     double wordPrior = 0.01;
@@ -69,11 +69,14 @@ public class LDABase
 			List<CharSequence> articleTextList = new ArrayList<CharSequence>(15000);
 			
 			while((line = input.readLine()) != null){
-				if (line.length() == 0 && docBuf.length() > 0) {
-	                articleTextList.add(docBuf);
-	                docBuf = new StringBuilder();
-	            }
-				docBuf.append(line);
+				line = line.replaceAll("\\~", " ");
+				line = line.replaceAll("null", " ");
+				line = line.replaceAll("\\p{Punct}+", " ");
+//				if (line.length() == 0 && docBuf.length() > 0) {
+	                articleTextList.add(line);
+//	                docBuf = new StringBuilder();
+//	            }
+//				docBuf.append(line);
 			}
 			
 			return articleTextList.<CharSequence>toArray(new CharSequence[articleTextList.size()]);
