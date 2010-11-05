@@ -10,12 +10,22 @@ import junit.framework.TestCase;
 
 public class HadoopFileTest extends TestCase {
 	public void testWrite() throws IOException{
-		HadoopFlatFormProvider hfp = new HadoopFlatFormProvider("../ICS-SND/src/ICS/SND/Tests/hadoopTestfile.txt");
+//		HadoopFlatFormProvider hfp = new HadoopFlatFormProvider("../ICS-SND/src/ICS/SND/Tests/hadoopTestfile.txt");
+		HadoopFlatFormProvider hfp = new HadoopFlatFormProvider("C:/KiyanHadoop/hadoopTestfileWithFilter.txt");
 		hfp.OpenFile();
+		Integer i=0;
+		IEntry currentEntry;
 		IDataProvider provider = new HibernateDataProvider();
-    	IEntry currentEntry = provider.LoadByTitle("My Title"); 
-		hfp.Save(currentEntry);
-		System.out.println(currentEntry.toString());
+		for(i=1;i<1632441;i++)
+		{
+			currentEntry = hfp.LoadWithBookTitleFilter(i.toString());
+//			currentEntry = provider.LoadByIndexNumber(i.toString());
+			if(currentEntry != null)
+			{
+				hfp.Save(currentEntry);
+				System.out.println(currentEntry.toString());
+			}
+		}
 		hfp.CloseFile();
 	}
 }

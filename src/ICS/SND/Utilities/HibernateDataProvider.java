@@ -2,6 +2,7 @@ package ICS.SND.Utilities;
 
 import java.util.*;
 
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.hibernate.*;
@@ -69,4 +70,13 @@ public class HibernateDataProvider implements IDataProvider {
         session.close();
 	}
 
+	@Override
+	public IEntry LoadByIndexNumber(String indexNumber) {
+		IEntry entry=null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query q = session.createQuery("from Entry where indexNumber='" + indexNumber + "'");
+		entry = (IEntry) q.uniqueResult();
+		session.close();
+		return entry;
+	}
 }

@@ -9,4 +9,5 @@ public interface IDataProvider {
     IEntry LoadByTitle(String title);
     IEntry Load(int id);
     List<IEntry> List(String title);
+    IEntry LoadByIndexNumber(String indexNumber);
 }
