@@ -2,24 +2,42 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="lib/hibernate/hibernate3.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/ant-contrib-1.0b2.jar"/>
+	<classpathentry kind="lib" path="lib/ant-junit-1.6.5.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/antlr.jar"/>
+	<classpathentry kind="lib" path="lib/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="lib/asm.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-testing.jar"/>
+	<classpathentry kind="lib" path="lib/infinispan-core-4.2.0.ALPHA1.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/javassist.jar"/>
+	<classpathentry kind="lib" path="lib/jbosscache-core-3.2.1.GA.jar"/>
+	<classpathentry kind="lib" path="lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jta.jar"/>
+	<classpathentry kind="lib" path="lib/junit-3.8.1.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/required/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/required/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/required/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/required/javassist-3.12.0.GA.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/required/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/hibernate-core.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/bytecode/cglib/cglib-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13/mysql-connector-java-5.1.13-bin.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/test/slf4j-log4j12.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/slf4j-api.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-annotations/lib/test/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/optional/c3p0/c3p0-0.9.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/lib/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/lingpipe-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="lib/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="lib/swarmcache-1.0RC2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

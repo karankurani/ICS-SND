@@ -13,8 +13,7 @@ public class HibernateUtil {
         try {
             Configuration config = new Configuration().configure("hibernate.cfg.xml");
             config.addPackage("ICS.SND.Entities").addAnnotatedClass(Entry.class);
-            SessionFactory factory = config.buildSessionFactory();
-            return factory;
+            return config.buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
