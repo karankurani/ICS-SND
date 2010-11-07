@@ -1,11 +1,11 @@
 package ICS.SND.Utilities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
-import org.hibernate.*;
 
 import ICS.SND.Entities.Entry;
 import ICS.SND.Interfaces.IDataProvider;
@@ -33,7 +33,8 @@ public class HibernateDataProvider implements IDataProvider {
         return entry;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public java.util.List<IEntry> List(String title) {
     	List<IEntry> list = new ArrayList<IEntry>();
     	Session session = HibernateUtil.getSessionFactory().openSession();
