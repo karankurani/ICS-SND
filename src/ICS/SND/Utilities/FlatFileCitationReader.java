@@ -3,7 +3,6 @@ package ICS.SND.Utilities;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
-import ICS.SND.Tests.DBLPEntryReaderTest;
 import ICS.SND.Utilities.Providers.EntryProvider;
 import org.apache.log4j.Logger;
 
@@ -31,13 +30,18 @@ public class FlatFileCitationReader implements IReader {
             String line;
             while ((line = input.readLine()) != null) {
                 if (line.length() == 0 && currentEntry != null) {
+                    log.debug("updating " + currentEntry.getTitle());
                     provider.Update(currentEntry);
-                    log.debug(currentEntry.toString());
                     currentEntry = null;
                 } else if (isField(line, "*")) {
                     line = getField(line, "*");
+                    log.debug("loading " + line);
                     currentEntry = provider.LoadByTitle(line);
+                    if(currentEntry == null) {
+                        log.error(String.format("I could not find entry with title [%s]", line));
+                    }
                 } else if (currentEntry != null) {
+                    log.debug("setting some properties");
                     setEntryProperties(currentEntry, line);
                 }
             }
@@ -49,8 +53,10 @@ public class FlatFileCitationReader implements IReader {
 
     private void setEntryProperties(IEntry entry, String line) {
         if (isField(line, "index")) {
+            log.debug(" * found the index");
             entry.setIndexNumber(getField(line, "index"));
         } else if (isField(line, "%")) {
+            log.debug(" * found the references");
             String referenceIndexNumbers = entry.getReferenceIndexNumbers();
             if (referenceIndexNumbers != null) {
                 entry.setReferenceIndexNumbers(referenceIndexNumbers + "|" + getField(line, "%"));
@@ -58,6 +64,7 @@ public class FlatFileCitationReader implements IReader {
                 entry.setReferenceIndexNumbers(getField(line, "%"));
             }
         } else if (isField(line, "!")) {
+            log.debug(" * found the abstract");
             entry.setAbstractText(getField(line, "!"));
         }
     }

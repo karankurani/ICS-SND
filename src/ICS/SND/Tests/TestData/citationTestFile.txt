@@ -1,4 +1,4 @@
-#*Requirements-based product line engineering.
+#*Object SQL - A Language for the Design and Implementation of Object Databases.
 #@Mike Mannion,Hermann Kaindl
 #t2001
 #cESEC / SIGSOFT FSE
@@ -10,14 +10,14 @@
 #%753231
 #!Reuse and requirements are very important for efficient and successful systems development. This tutorial presents the experiences of requirements reuse using a Method for Requirements Authoring and Management (MRAM). MRAM is a method for establishing and selecting from product line requirements. A product line is a group of products within the same market segment e.g. mobile phones. TRAM (Tool for Requirements Authoring and Management) is a software tool to support MRAM that utilises current proven office technology (MS-Word, MS-Access). The tutorial presents the results of MRAM/TRAM as it has been applied to product line engineering of a real-world application.
 
-#*The usability problem for home appliances: engineers caused it, engineers can fix it!
+#*OQL[C++]: Extending C++ with an Object Query Capability.
 #@Joe Marks
 #t2004
 #cSIGSOFT FSE
 #index601226
 #!Ordinary people already have great difficulty using the advanced features of digitally enabled household appliances, and the problem grows worse with time as more customization and programming features are added. This usability problem cannot be solved using the tiny displays and limited control buttons typically found on such devices. In this talk I will describe a new type of collaborative interface in which the appliance actively helps the user, especially with complex features that are only used occasionally. This interface provides a consistent and pervasive mechanism for answering the who-what-where-when-why-how questions that often cause users to consult a manual, call a help line, or simply give up. A crucial aspect of the interface architecture is the use of home networking to share a physically large and computationally powerful display among multiple appliances. Why is this a relevant talk for a software-engineering conference? A contributing factor to the usability crisis is the dominance of engineers in product design at many companies. The development of more-usable devices requires a broader conception of engineering that includes interaction design, artificial intelligence, and human factors - at a minimum. I will describe how these disciplines can complement traditional electrical and software engineering in the context of attempting to solve a commercially significant real-world problem.
 
-#*CAIS: Collaborative Asynchronous Inspection of Software.
+#*Transaction Management in Multidatabase Systems.
 #@Vahid Mashayekhi,Chris Feulner,John Riedl
 #t1994
 #cSIGSOFT FSE
