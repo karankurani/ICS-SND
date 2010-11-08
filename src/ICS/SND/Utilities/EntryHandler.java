@@ -1,5 +1,6 @@
 package ICS.SND.Utilities;
 
+import org.apache.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -9,6 +10,8 @@ import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IProcessor;
 
 public class EntryHandler extends DefaultHandler {
+    private static final Logger log = Logger.getLogger(EntryHandler.class);
+
     public EntryHandler(IProcessor processor) {
         this.processor = processor;
     }
@@ -68,7 +71,7 @@ public class EntryHandler extends DefaultHandler {
         }
         if (author) {
             String currentAuthor = currentEntry.getAuthor();
-            if (currentAuthor == "") {
+            if (currentAuthor.equals("")) {
                 currentEntry.setAuthor(new String(ch, start, length));
             } else {
                 currentEntry.setAuthor(currentAuthor + "|" + new String(ch, start, length));
