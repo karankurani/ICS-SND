@@ -30,20 +30,20 @@ public class HibernateTest {
     }
 
     @Test
-    public void testHibernate() {
+    public void Save() {
         IEntry entry = new Entry();
         entry.setTitle(ORIGINAL_TITLE);
         provider.Save(entry);
     }
 
     @Test
-    public void testLoadByTitle() {
+    public void LoadByTitle() {
         IEntry entry = provider.LoadByTitle(ORIGINAL_TITLE);
         System.out.println(entry.toString());
     }
 
     @Test
-    public void testUpdateByTitle() {
+    public void UpdateByTitle() {
         IEntry entry = provider.LoadByTitle(ORIGINAL_TITLE);
         entry.setTitle(UPDATE_TITLE);
         provider.Update(entry);

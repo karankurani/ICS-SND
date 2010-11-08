@@ -25,7 +25,7 @@ public class EntryHandler extends DefaultHandler {
     private IProcessor processor;
 
     public void startElement(String nsURI, String strippedName, String tagName,
-            Attributes attributes) throws SAXException {
+                             Attributes attributes) throws SAXException {
         if (tagName.equalsIgnoreCase("incollection")
                 || tagName.equalsIgnoreCase("book")
                 || tagName.equalsIgnoreCase("proceedings")
@@ -67,16 +67,13 @@ public class EntryHandler extends DefaultHandler {
             title = false;
         }
         if (author) {
-        	String currentAuthor=currentEntry.getAuthor();
-        	if(currentAuthor=="")
-        	{
-        		currentEntry.setAuthor(new String(ch, start, length));
-        	}
-        	else
-        	{
-        		currentEntry.setAuthor(currentAuthor + "|" + new String(ch, start, length));
-        	}
-        	author = false;
+            String currentAuthor = currentEntry.getAuthor();
+            if (currentAuthor == "") {
+                currentEntry.setAuthor(new String(ch, start, length));
+            } else {
+                currentEntry.setAuthor(currentAuthor + "|" + new String(ch, start, length));
+            }
+            author = false;
         }
         if (publisher) {
             currentEntry.setPublisher(new String(ch, start, length));

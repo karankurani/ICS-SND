@@ -3,13 +3,17 @@ package ICS.SND.Utilities;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
+import ICS.SND.Tests.DBLPEntryReaderTest;
 import ICS.SND.Utilities.Providers.EntryProvider;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class FlatFileCitationReader implements IReader {
+    private static final Logger log = Logger.getLogger(FlatFileCitationReader.class);
     private String filePath;
     private EntryProvider provider;
 
@@ -28,18 +32,18 @@ public class FlatFileCitationReader implements IReader {
             while ((line = input.readLine()) != null) {
                 if (line.length() == 0 && currentEntry != null) {
                     provider.Update(currentEntry);
-                    System.out.println(currentEntry.toString());
+                    log.debug(currentEntry.toString());
                     currentEntry = null;
                 } else if (isField(line, "*")) {
                     line = getField(line, "*");
-                    currentEntry = provider.LoadByIndexNumber(line);
+                    currentEntry = provider.LoadByTitle(line);
                 } else if (currentEntry != null) {
                     setEntryProperties(currentEntry, line);
                 }
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage() + Arrays.toString(e.getStackTrace()));
         }
     }
 

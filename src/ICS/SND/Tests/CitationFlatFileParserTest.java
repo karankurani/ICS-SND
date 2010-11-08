@@ -1,28 +1,20 @@
 package ICS.SND.Tests;
 
-import junit.framework.TestCase;
-
-import org.junit.BeforeClass;
-
-import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
 import ICS.SND.Utilities.FlatFileCitationReader;
-import ICS.SND.Utilities.Providers.HibernateDataProvider;
 import ICS.SND.Utilities.Processor;
+import org.apache.log4j.Logger;
+import org.junit.Test;
 
-public class CitationFlatFileParserTest extends TestCase {
-    static IDataProvider provider;
+public class CitationFlatFileParserTest {
+    private static final Logger log = Logger.getLogger(DBLPEntryReaderTest.class);
 
-    @BeforeClass
-    public static void oneTimeSetUp() {
-        provider = new HibernateDataProvider();
-    }
-
-    public void testEntryReader() {
+    @Test
+    public void FlatFileCitationReaderReadsFileAndStoresInDB() {
         IProcessor processor = new Processor();
-        IReader reader = new FlatFileCitationReader("../ICS.SND/src/ICS/SND/Tests/citationTestFile.txt");
+        IReader reader = new FlatFileCitationReader(UnitTests.DATA_PATH + "citationTestFile.txt");
         reader.Process(processor);
-        System.out.println("Woot! Succesfully Read the citation file.");
+        log.info("Woot! Successfully read the citation file.");
     }
 }
