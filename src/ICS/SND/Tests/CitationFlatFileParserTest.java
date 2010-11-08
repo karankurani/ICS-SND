@@ -8,7 +8,7 @@ import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IProcessor;
 import ICS.SND.Interfaces.IReader;
 import ICS.SND.Utilities.FlatFileCitationReader;
-import ICS.SND.Utilities.HibernateDataProvider;
+import ICS.SND.Utilities.Providers.HibernateDataProvider;
 import ICS.SND.Utilities.Processor;
 
 public class CitationFlatFileParserTest extends TestCase {
@@ -21,8 +21,7 @@ public class CitationFlatFileParserTest extends TestCase {
 
     public void testEntryReader() {
         IProcessor processor = new Processor();
-//        IReader reader = new FlatFileCitationReader("../ICS.SND/src/ICS/SND/Tests/citationTestFile.txt");
-        IReader reader = new FlatFileCitationReader("C:/SND-LDA/DBLPOnlyCitationOct19.txt");
+        IReader reader = new FlatFileCitationReader("../ICS.SND/src/ICS/SND/Tests/citationTestFile.txt");
         reader.Process(processor);
         System.out.println("Woot! Succesfully Read the citation file.");
     }

@@ -1,13 +1,16 @@
 package ICS.SND.Interfaces;
 
-import java.util.*;
+import java.util.List;
 
-public interface IDataProvider {
+public interface IDataProvider<T> {
 
-    void Save(IEntry currentEntry);
-    void Update(IEntry currentEntry);
-    IEntry LoadByTitle(String title);
-    IEntry Load(int id);
-    List<IEntry> List(String title);
-    IEntry LoadByIndexNumber(String indexNumber);
+    void Save(T item);
+
+    void Update(T item);
+
+    T Load(IQuery q);
+
+    List<T> List(IQuery q);
+
+    void Delete(T item);
 }

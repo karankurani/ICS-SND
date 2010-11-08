@@ -1,6 +1,7 @@
 package ICS.SND.Utilities;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import ICS.SND.Entities.Entry;
@@ -11,7 +12,7 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            Configuration config = new Configuration().configure("hibernate.cfg.xml");
+            AnnotationConfiguration config = new AnnotationConfiguration().configure("hibernate.cfg.xml");
             config.addPackage("ICS.SND.Entities").addAnnotatedClass(Entry.class);
             return config.buildSessionFactory();
         } catch (Throwable ex) {

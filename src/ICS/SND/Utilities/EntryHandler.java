@@ -14,7 +14,6 @@ public class EntryHandler extends DefaultHandler {
     }
 
     IEntry currentEntry;
-    boolean entry = false;
     boolean title = false;
     boolean author = false;
     boolean publisher = false;
@@ -30,8 +29,11 @@ public class EntryHandler extends DefaultHandler {
         if (tagName.equalsIgnoreCase("incollection")
                 || tagName.equalsIgnoreCase("book")
                 || tagName.equalsIgnoreCase("proceedings")
-                || tagName.equalsIgnoreCase("inproceedings"))
-            entry = true;
+                || tagName.equalsIgnoreCase("inproceedings")) {
+            currentEntry = new Entry();
+            currentEntry.setAuthor("");
+            currentEntry.setType(tagName);
+        }
         if (tagName.equalsIgnoreCase("title"))
             title = true;
         if (tagName.equalsIgnoreCase("author"))
@@ -60,11 +62,6 @@ public class EntryHandler extends DefaultHandler {
     }
 
     public void characters(char[] ch, int start, int length) {
-        if (entry) {
-            currentEntry = new Entry();
-            currentEntry.setAuthor("");
-            entry = false;
-        }
         if (title) {
             currentEntry.setTitle(new String(ch, start, length));
             title = false;

@@ -1,7 +1,8 @@
-package ICS.SND.Utilities;
+package ICS.SND.Utilities.Providers;
 
 import java.io.*;
 
+import ICS.SND.Utilities.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.classic.Session;
 import ICS.SND.Interfaces.IEntry;

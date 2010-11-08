@@ -53,4 +53,8 @@ public interface IEntry {
 
 	public void setReferenceIndexNumbers(String references);
 
+    public String getType();
+
+    public void setType(String type);
+
 }

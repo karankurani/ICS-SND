@@ -18,8 +18,9 @@ public class Entry implements IEntry {
 	private String abstractText;
 	private String indexNumber;
 	private String referenceIndexNumbers;
+    private String type;
 
-	@Override
+    @Override
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -63,7 +64,17 @@ public class Entry implements IEntry {
 		this.referenceIndexNumbers = references;
 	}
 
-	@Override
+    @Override
+    public String getType() {
+        return this.type;
+    }
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
 	@Column(length = 1024)
 	public String getAuthor() {
 		return author;
