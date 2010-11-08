@@ -1,36 +1,45 @@
 package ICS.SND.Entities;
 
+import ICS.SND.Tests.UnitTests;
+
 import com.aliasi.cluster.LatentDirichletAllocation;
 import com.aliasi.tokenizer.*;
 import com.aliasi.symbol.*;
 import java.io.*;
 import java.util.*;
 
-public class LDABase 
+public class LDABase implements Serializable 
 {
 
-	int minTokenCount = 3;
-	short numTopics = 2;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -530485173822375971L;
+	int minTokenCount = 1;
+	short numTopics = 15;
 	double topicPrior = 0.1;
 	double wordPrior = 0.01;
-	int burninEpochs = 0;
-	int sampleLag = 1;
-	int numSamples = 20;
+	public int burninEpochs = 0;
+	public int sampleLag = 1;
+	public int numSamples = 2000;
 	long randomSeed = 6474835;
-	CharSequence[] articleTexts;
+	public CharSequence[] articleTexts;
 	public SymbolTable symbolTable;
-	public LatentDirichletAllocation.GibbsSample sample;
+	public LatentDirichletAllocation lda;
 	public int[][] docTokens;
-
+	public LatentDirichletAllocation.GibbsSample sample ;
+	private static final String[] STOPWORD_LIST = setStopWordList(UnitTests.DATA_PATH + "dblp_stopwords_only.txt");
+	private static final Set<String> STOPWORD_SET =  new HashSet<String>(Arrays.asList(STOPWORD_LIST));
+	
 	public LDABase(String corpusFile)
 	{
 		this.articleTexts = readCorpus(corpusFile);
-	}
-
-	public void startEpochs(){
 		symbolTable = new MapSymbolTable();
 		docTokens = LatentDirichletAllocation
 		.tokenizeDocuments(articleTexts,WORMBASE_TOKENIZER_FACTORY,symbolTable,minTokenCount);
+	}
+	
+	public void startEpochs(){
 
 		System.out.println("Number of unique words above count threshold=" + symbolTable.numSymbols());
 
@@ -52,13 +61,22 @@ public class LDABase
 
 				new Random(randomSeed),
 				handler);
-
-		int maxWordsPerTopic = 200;
+		lda = sample.lda();
+		int maxWordsPerTopic = 20;
 		int maxTopicsPerDoc = 10;
 		boolean reportTokens = true;
 		handler.fullReport(sample,maxWordsPerTopic,maxTopicsPerDoc,reportTokens);
 	}
 
+	public int[] getDocumentTokens(String docString){
+		docString = docString.substring(docString.indexOf("~"));
+		docString = docString.replaceAll("\\~", " ");
+		docString = docString.replaceAll("null", " ");
+		docString = docString.replaceAll("\\p{Punct}+", " ").trim();
+		int[] docTokens = LatentDirichletAllocation.tokenizeDocument(docString, 
+				WORMBASE_TOKENIZER_FACTORY, symbolTable);
+		return docTokens;
+	}
 	private CharSequence[] readCorpus(String corpusFile) {
 		BufferedReader input;
 		try {
@@ -67,6 +85,7 @@ public class LDABase
 			List<CharSequence> articleTextList = new ArrayList<CharSequence>(15000);
 
 			while((line = input.readLine()) != null){
+				line = line.substring(line.indexOf("~"));
 				line = line.replaceAll("\\~", " ");
 				line = line.replaceAll("null", " ");
 				line = line.replaceAll("\\p{Punct}+", " ");
@@ -91,6 +110,22 @@ public class LDABase
 		return false;
 	}
 
+	static String[] setStopWordList(String filename){
+		try{
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line = "";
+			String stopString = "";
+			while((line=br.readLine())!=null){
+				stopString += line.trim()+"|";
+			}
+			String[] temp = stopString.split("\\|");
+			return temp;
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 	static final TokenizerFactory wormbaseTokenizerFactory() {
 		TokenizerFactory factory = BASE_TOKENIZER_FACTORY;
 		factory = new NonAlphaStopTokenizerFactory(factory);
@@ -98,6 +133,7 @@ public class LDABase
 		factory = new EnglishStopTokenizerFactory(factory);
 		factory = new StopTokenizerFactory(factory,STOPWORD_SET);
 		factory = new StemTokenizerFactory(factory);
+		factory = new StopTokenizerFactory(factory,STOPWORD_SET);
 		return factory;
 	}
 
@@ -109,93 +145,7 @@ public class LDABase
 	= new char[] { 'a', 'e', 'i', 'o', 'u', 'y' };
 
 
-	static final String[] STOPWORD_LIST
-	= new String[] {
 
-		"these",
-		"elegan",
-		"caenorhabditi",
-		"both",
-		"may",
-		"between",
-		"our",
-		"et",
-		"al",
-		"however",
-		"many",
-
-		"thu",
-		"thus", // thus
-
-		"how",
-		"while",
-		"same",
-		"here",
-		"although",
-		"those",
-		"might",
-		"see",
-		"like",
-		"likely",
-		"where",
-
-		// looked at all 100 count plus
-
-		// "first",
-		// "second",
-		// "third",
-		// "fourth",
-		// "fifth",
-		// "sixth",
-		// "seventh",
-		// "eighth",
-		// "ninth",
-
-		"i",
-		"ii",
-		"iii",
-		"iv",
-		"v",
-		"vi",
-		"vii",
-		"viii",
-		"ix",
-		"x",
-		"zero",
-		"one",
-		"two",
-		"three",
-		"four",
-		"five",
-		"six",
-		"seven",
-		"eight",
-		"nine",
-		"ten",
-		"eleven",
-		"twelve",
-		"thirteen",
-		"fourteen",
-		"fifteen",
-		"sixteen",
-		"seventeen",
-		"eighteen",
-		"nineteen",
-		"twenty",
-		"thirty",
-		"forty",
-		"fifty",
-		"sixty",
-		"seventy",
-		"eighty",
-		"ninety",
-		"hundred",
-		"thousand",
-		"million"
-	};
-
-	static final Set<String> STOPWORD_SET
-	= new HashSet<String>(Arrays.asList(STOPWORD_LIST));
 
 	static final TokenizerFactory WORMBASE_TOKENIZER_FACTORY
 	= wormbaseTokenizerFactory();
@@ -225,7 +175,7 @@ public class LDABase
 			super(factory);
 		}
 		static final String[] SUFFIXES = new String[] {
-			"ss", "ies", "sses", "s" // s must be last as its weaker
+			"ss", "ies", "sses", "s", "ing", "ed" // s must be last as its weaker
 		};
 		public String modifyToken(String token) {
 			for (String suffix : SUFFIXES) {

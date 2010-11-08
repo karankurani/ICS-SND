@@ -2,8 +2,6 @@ package ICS.SND.Utilities;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
-
 import ICS.SND.Entities.Entry;
 
 public class HibernateUtil {

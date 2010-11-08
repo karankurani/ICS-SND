@@ -1,6 +1,5 @@
 package ICS.SND.Utilities.Providers;
 
-import ICS.SND.Entities.Entry;
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IQuery;
@@ -8,10 +7,9 @@ import org.apache.log4j.Logger;
 
 import java.util.List;
 
-@SuppressWarnings({"unchecked"})
 public class EntryProvider {
     private static final Logger log = Logger.getLogger(EntryProvider.class);
-    IDataProvider provider = new HibernateDataProvider<Entry>();
+    IDataProvider<IEntry> provider = new HibernateDataProvider<IEntry>();
 
     public IEntry LoadByTitle(String title) {
         log.debug("loading title " + title);
