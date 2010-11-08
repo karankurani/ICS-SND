@@ -35,14 +35,14 @@ public class LdaTest{
 				seedPaperTopicProb[i][j] = lbase.sample.documentTopicProb(i, j);
 			}
 		}
-		
-		int i=0;
 
 		DivergencePaper dp;
 		List<DivergencePaper>[] dpLists = (ArrayList<DivergencePaper>[])new ArrayList[lbase.sample.numDocuments()];
 		for(int j=0;j<lbase.sample.numDocuments();j++){
 			dpLists[j] = new ArrayList<DivergencePaper>();	
 		}
+		
+		int i=0;
 		
 		while((line = br.readLine())!=null){
 	

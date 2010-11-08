@@ -25,10 +25,9 @@ public class DivergencePaper{
 		this.divergence = divergence;
 	} 
 	public DivergencePaper(String line, int indexNumber){
-		String[] splitS = line.split("\\~");
-		Integer integerIndex =indexNumber; 
+		String[] splitS = line.split("\\~"); 
 		this.title = splitS[1].trim();
-		this.indexNumber = integerIndex.toString();
+		this.indexNumber = Integer.toString(indexNumber);
 	}
 	
 	public String toString(){
