@@ -26,7 +26,6 @@
 	<classpathentry kind="lib" path="lib/jbosscache-core-3.2.1.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jta.jar"/>
-	<classpathentry kind="lib" path="lib/junit-3.8.1.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/lingpipe-4.0.1.jar"/>
@@ -34,10 +33,9 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13-bin.jar"/>
 	<classpathentry kind="lib" path="lib/oscache-2.1.jar"/>
 	<classpathentry kind="lib" path="lib/proxool-0.8.3.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12.jar"/>
 	<classpathentry kind="lib" path="lib/swarmcache-1.0RC2.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
