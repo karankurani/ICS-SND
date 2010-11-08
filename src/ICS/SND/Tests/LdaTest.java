@@ -1,6 +1,7 @@
 package ICS.SND.Tests;
 
 import java.io.*;
+
 import com.aliasi.stats.*;
 
 import java.util.ArrayList;
@@ -18,17 +19,18 @@ public class LdaTest{
 	public void LDADivergenceTest() throws IOException{
 		LDABase lbase = new LDABase(UnitTests.DATA_PATH +"ldaSeedInput.txt");
 		BufferedReader br = new BufferedReader(new FileReader(UnitTests.DATA_PATH + "ldaSeedInput.txt"));
+
 		PrintStream ps = new PrintStream(new File(UnitTests.DATA_PATH + "ldaKLOutput.txt"));
-		System.setOut(ps);
+//		System.setOut(ps);
+
 		lbase.startEpochs();
+		
 		String line = "";
 		int[] docTokens;
 		double[] bayesEstimate;
 		double[][] seedPaperTopicProb = new double[lbase.sample.numDocuments()][lbase.sample.numTopics()];
-		BufferedWriter[] writer = new BufferedWriter[lbase.sample.numDocuments()]; 
+		
 		for(int i=0; i<lbase.sample.numDocuments(); i++){
-			FileWriter fw = new FileWriter(UnitTests.DATA_PATH + "/OutputFiles/" + i + "Divergence.txt");
-			writer[i] = new BufferedWriter(fw);
 			for(int j=0;j< lbase.sample.numTopics();j++){
 				seedPaperTopicProb[i][j] = lbase.sample.documentTopicProb(i, j);
 			}
@@ -74,12 +76,18 @@ public class LdaTest{
 		for(int j=0;j<lbase.sample.numDocuments();j++){
 			Collections.sort(dpLists[j],comparator);
 		}
+		FileWriter fw = new FileWriter(UnitTests.DATA_PATH + "/OutputFiles/" + 0 + "Divergence.txt");
+		BufferedWriter writer = new BufferedWriter(fw);
 		for(int j=0;j<lbase.sample.numDocuments();j++){
+			fw = new FileWriter(UnitTests.DATA_PATH + "/OutputFiles/" + j + "Divergence.txt");
+			writer = new BufferedWriter(fw);
 			System.out.println("For Seed Paper :" + j);
 			System.out.println("----------------------");
 			for(int k=0;k<dpLists[j].size();k++){
 				System.out.println(dpLists[j].get(k).toString());
+				writer.write(dpLists[j].get(k).toString()+"\n");
 			}
+			writer.flush();
 			System.out.println();
 		}
 	}
