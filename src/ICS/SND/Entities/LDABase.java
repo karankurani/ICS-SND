@@ -137,9 +137,10 @@ public class LDABase implements Serializable
 		return factory;
 	}
 
+//	static final TokenizerFactory BASE_TOKENIZER_FACTORY
+//	= new RegExTokenizerFactory("[\\x2Da-zA-Z0-9]+"); // letter or digit or hyphen (\x2D)
 	static final TokenizerFactory BASE_TOKENIZER_FACTORY
-	= new RegExTokenizerFactory("[\\x2Da-zA-Z0-9]+"); // letter or digit or hyphen (\x2D)
-
+	= new RegExTokenizerFactory("[a-zA-Z0-9]+"); // letter or digit or hyphen (\x2D)
 
 	static final char[] VOWELS
 	= new char[] { 'a', 'e', 'i', 'o', 'u', 'y' };
