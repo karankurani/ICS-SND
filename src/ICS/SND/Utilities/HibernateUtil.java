@@ -2,6 +2,8 @@ package ICS.SND.Utilities;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+
+import ICS.SND.Entities.DivergenceEntry;
 import ICS.SND.Entities.Entry;
 
 public class HibernateUtil {
@@ -11,7 +13,9 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             AnnotationConfiguration config = new AnnotationConfiguration().configure("hibernate.cfg.xml");
-            config.addPackage("ICS.SND.Entities").addAnnotatedClass(Entry.class);
+            config.addPackage("ICS.SND.Entities")
+            .addAnnotatedClass(Entry.class)
+            .addAnnotatedClass(DivergenceEntry.class);
             return config.buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed

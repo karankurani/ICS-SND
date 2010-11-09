@@ -56,5 +56,8 @@ public interface IEntry {
     public String getType();
 
     public void setType(String type);
-
+    
+    public boolean getIsSeed();
+    
+    public void setIsSeed(boolean val);
 }

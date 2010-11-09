@@ -19,6 +19,7 @@ public class Entry implements IEntry {
 	private String indexNumber;
 	private String referenceIndexNumbers;
     private String type;
+    private boolean isSeed;
 
     @Override
 	public void setId(int id) {
@@ -170,4 +171,14 @@ public class Entry implements IEntry {
 	public String toString() {
 		return this.indexNumber+ " [Title]"+ this.title + " [Authors]" + this.author + " [Abstract]" + this.abstractText + " [References]" + this.referenceIndexNumbers;
 	}
+
+    @Override
+    public boolean getIsSeed() {
+        return isSeed;
+    }
+
+    @Override
+    public void setIsSeed(boolean val) {
+        this.isSeed = val;
+    }
 }
