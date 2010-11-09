@@ -30,6 +30,11 @@ public class DivergencePaper{
 		this.indexNumber = Integer.toString(indexNumber);
 	}
 	
+	public DivergencePaper(String line) {
+		String[] splitS = line.split("\\~"); 
+		this.title = splitS[2].trim();
+		this.indexNumber = splitS[0];
+	}
 	public String toString(){
 		return indexNumber + seperator + divergence + seperator + title;
 	}
