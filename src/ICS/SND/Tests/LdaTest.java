@@ -21,7 +21,7 @@ public class LdaTest{
 		BufferedReader br = new BufferedReader(new FileReader(UnitTests.DATA_PATH + "ldaSeedInput.txt"));
 
 		PrintStream ps = new PrintStream(new File(UnitTests.DATA_PATH + "ldaKLOutput.txt"));
-//		System.setOut(ps);
+		System.setOut(ps);
 
 		lbase.startEpochs();
 		

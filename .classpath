@@ -37,5 +37,6 @@
 	<classpathentry kind="lib" path="lib/slf4j-log4j12.jar"/>
 	<classpathentry kind="lib" path="lib/swarmcache-1.0RC2.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="lib/javabib-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
