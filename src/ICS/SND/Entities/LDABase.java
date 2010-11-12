@@ -21,7 +21,7 @@ public class LDABase implements Serializable
 	double wordPrior = 0.01;
 	public int burninEpochs = 0;
 	public int sampleLag = 1;
-	public int numSamples = 2000;
+	public int numSamples = 200;
 	long randomSeed = 6474835;
 	public CharSequence[] articleTexts;
 	public SymbolTable symbolTable;

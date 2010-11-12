@@ -31,7 +31,7 @@ public class Main {
 		LDABase lbase = new LDABase(UnitTests.DATA_PATH +"ldaSeedInput.txt");
 
 		PrintStream ps = new PrintStream(new File("C:/KiyanHadoop/ldaKLOutput.txt"));
-		System.setOut(ps);
+//		System.setOut(ps);
 
 		lbase.startEpochs();
 		
@@ -56,49 +56,39 @@ public class Main {
 		int[] docTokens;
 		double[] bayesEstimate;
 		DivergencePaper dp = new DivergencePaper(lines[0]);
+		double currDivergence = 10000;
 		String[] splitS;
-//		for(int i=0;i<lbase.sample.numDocuments();i++){
-		for(int i=0;i<2;i++){
-				FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/" + i + "Divergence.txt");
-				BufferedWriter writer = new BufferedWriter(fw);
-				
-				for(int k=0;k<count;k++){
-					docTokens = lbase.getDocumentTokens(lines[k]);
-					splitS = lines[k].split("\\~");
-					dp.setTitle(splitS[2]);
-					dp.setIndexNumber(splitS[0]);
-					
-					if(docTokens.length==0){
-						dp.setDivergence(10000);
-						writer.write(dp.toString()+"\n");
-						continue;	
-					}
-					
-					bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 2000, lbase.burninEpochs, lbase.sampleLag, new Random());
-					for(int j=0;j<bayesEstimate.length;j++){
-						if(bayesEstimate[j]==0){
-							bayesEstimate[j]=0.0000000001;
-						}
-					}
-					
-					line = lines[k];
-					dp.setDivergence(Statistics.symmetrizedKlDivergence(seedPaperTopicProb[i], bayesEstimate));
-					writer.write(dp.toString()+"\n");
-					writer.flush();
-				}
-				System.out.println("Processed document :" + i);
+		
+		FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/Divergence.txt");
+		BufferedWriter writer = new BufferedWriter(fw);    
+	    for(int k=0;k<count;k++){
+	        dp.setDivergence(10000);
+	        for(int i=0;i<lbase.sample.numDocuments();i++){
+                docTokens = lbase.getDocumentTokens(lines[k]);
+                splitS = lines[k].split("\\~");
+                dp.setTitle(splitS[2]);
+                dp.setIndexNumber(splitS[0]);
+                
+                if(docTokens.length==0){   
+                    continue;
+                }
+                
+                bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 20, lbase.burninEpochs, lbase.sampleLag, new Random());
+                for(int j=0;j<bayesEstimate.length;j++){
+                    if(bayesEstimate[j]==0){
+                        bayesEstimate[j]=0.0000000001;
+                    }
+                }
+                
+                line = lines[k];
+                currDivergence = Statistics.symmetrizedKlDivergence(seedPaperTopicProb[i], bayesEstimate);
+                if(currDivergence < dp.getDivergence()){
+                    dp.setDivergence(currDivergence);
+                }
+            }
+//		    System.out.println(dp.toString());
+		    writer.write(dp.toString()+"\n");
 		}
-//		Arrays.sort(dpList);
-//		System.out.println("For Seed Paper :" + i);
-//		System.out.println("----------------------");
-//		for(int k=0;k<count;k++){
-//			System.out.println(dpList.get(k).toString());
-//			if(dpList[k].getDivergence()!=10000){
-//				dpList[k]=null;
-//			}
-//		}
-		
-		
-//		System.out.println();
+	    writer.flush();
 	}	
 }
