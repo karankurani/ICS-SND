@@ -28,42 +28,89 @@ public class Main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		LDABase lbase = new LDABase(UnitTests.DATA_PATH +"ldaSeedInput.txt");
+	    getUnsortedList();
+	    sortList();
+	}	
+	private static void sortList() throws IOException{
+        // TODO Auto-generated method stub
+	    BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLOutputFiles/Divergence.txt"));
+	    FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/SortedDivergence.txt");
+        BufferedWriter writer = new BufferedWriter(fw);
+        String line;
+        String[] lines = new String[700000];
+        int count =0;
+        while((line=br.readLine())!=null){
+            lines[count]= line;
+            count++;
+        }
+        String[] splitS;
+        
+        DivergencePaper dp = new DivergencePaper("index~abc~title~blah");
+        int dpListLength = 10000;
+        DivergencePaper[] dpList = new DivergencePaper[dpListLength];
+        for(int k=0;k<dpListLength;k++){
+            dpList[k] = new DivergencePaper("index~abc~title~blah");
+            dpList[k].setDivergence(10000);
+        }
+        int dpCount = 0;
+        for(int k=0;k<count;k++){
+            splitS = lines[k].split("\\t");
+            if(Double.parseDouble(splitS[1])<1){
+                dp = new DivergencePaper("index~abc~title~blah");
+                dp.setDivergence(Double.parseDouble(splitS[1]));
+                dp.setTitle(splitS[2]);
+                dp.setIndexNumber(splitS[0]);
+                dpList[dpCount]=dp;
+                dpCount++;
+                if(dpCount == dpListLength){
+                    break;
+                }
+            }
+        }
+        Arrays.sort(dpList);
+        
+        for(int k=0;k<dpCount;k++){
+            writer.write(dpList[k].toString() + "\n");
+        }
+        writer.flush();
+    }
+    private static void getUnsortedList() throws IOException{
+	    
+	    LDABase lbase = new LDABase(UnitTests.DATA_PATH +"ldaSeedInput.txt");
 
-		PrintStream ps = new PrintStream(new File("C:/KiyanHadoop/ldaKLOutput.txt"));
-//		System.setOut(ps);
+        PrintStream ps = new PrintStream(new File("C:/KiyanHadoop/ldaKLOutput.txt"));
+//      System.setOut(ps);
 
-		lbase.startEpochs();
-		
-		String line = "";
-		double[][] seedPaperTopicProb = new double[lbase.sample.numDocuments()][lbase.sample.numTopics()];
-		
-		
-		for(int i=0; i<lbase.sample.numDocuments(); i++){
-			for(int j=0;j< lbase.sample.numTopics();j++){
-				seedPaperTopicProb[i][j] = lbase.sample.documentTopicProb(i, j);
-			}
-		}
+        lbase.startEpochs();
+        String line = "";
+        double[][] seedPaperTopicProb = new double[lbase.sample.numDocuments()][lbase.sample.numTopics()];
+        
+        
+        for(int i=0; i<lbase.sample.numDocuments(); i++){
+            for(int j=0;j< lbase.sample.numTopics();j++){
+                seedPaperTopicProb[i][j] = lbase.sample.documentTopicProb(i, j);
+            }
+        }
 
-		String[] lines = new String[700000];
-		BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLDivergenceTest.txt"));
-//		BufferedReader br = new BufferedReader(new FileReader(UnitTests.DATA_PATH +"ldaSeedInput.txt"));
-		int count=0;
-		while((line=br.readLine())!=null){
-			lines[count]= line;
-			count++;
-		}
-		int[] docTokens;
-		double[] bayesEstimate;
-		DivergencePaper dp = new DivergencePaper(lines[0]);
-		double currDivergence = 10000;
-		String[] splitS;
-		
-		FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/Divergence.txt");
-		BufferedWriter writer = new BufferedWriter(fw);    
-	    for(int k=0;k<count;k++){
-	        dp.setDivergence(10000);
-	        for(int i=0;i<lbase.sample.numDocuments();i++){
+        String[] lines = new String[700000];
+        BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLDivergenceTest.txt"));
+//      BufferedReader br = new BufferedReader(new FileReader(UnitTests.DATA_PATH +"ldaSeedInput.txt"));
+        int count=0;
+        while((line=br.readLine())!=null){
+            lines[count]= line;
+            count++;
+        }
+        int[] docTokens;
+        double[] bayesEstimate;
+        DivergencePaper dp = new DivergencePaper(lines[0]);
+        double currDivergence = 10000;
+        String[] splitS;
+        
+        FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/Divergence.txt");
+        BufferedWriter writer = new BufferedWriter(fw);    
+        for(int k=0;k<count;k++){
+            dp.setDivergence(10000);
+            for(int i=0;i<lbase.sample.numDocuments();i++){
                 docTokens = lbase.getDocumentTokens(lines[k]);
                 splitS = lines[k].split("\\~");
                 dp.setTitle(splitS[2]);
@@ -73,7 +120,7 @@ public class Main {
                     continue;
                 }
                 
-                bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 20, lbase.burninEpochs, lbase.sampleLag, new Random());
+                bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 200, lbase.burninEpochs, lbase.sampleLag, new Random());
                 for(int j=0;j<bayesEstimate.length;j++){
                     if(bayesEstimate[j]==0){
                         bayesEstimate[j]=0.0000000001;
@@ -86,9 +133,9 @@ public class Main {
                     dp.setDivergence(currDivergence);
                 }
             }
-//		    System.out.println(dp.toString());
-		    writer.write(dp.toString()+"\n");
-		}
-	    writer.flush();
-	}	
+//          System.out.println(dp.toString());
+            writer.write(dp.toString()+"\n");
+        }
+        writer.flush();
+	}
 }

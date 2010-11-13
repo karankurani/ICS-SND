@@ -1,6 +1,6 @@
 package ICS.SND.Entities;
 
-public class DivergencePaper{
+public class DivergencePaper implements Comparable<DivergencePaper>{
 	String title;
 	String indexNumber;
 	double divergence;
@@ -38,4 +38,14 @@ public class DivergencePaper{
 	public String toString(){
 		return indexNumber + seperator + divergence + seperator + title;
 	}
+    @Override
+    public int compareTo(DivergencePaper o) {
+        if(this.getDivergence() > o.getDivergence()){
+            return 1;
+        }
+        else if(this.getDivergence() < o.getDivergence()){
+            return -1;
+        }
+        return 0;
+    }
 }
