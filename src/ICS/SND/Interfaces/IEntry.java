@@ -1,5 +1,9 @@
 package ICS.SND.Interfaces;
 
+import java.util.Set;
+
+import ICS.SND.Entities.Author;
+
 public interface IEntry {
     public void setId(int id);
 
@@ -60,4 +64,8 @@ public interface IEntry {
     public boolean getIsSeed();
     
     public void setIsSeed(boolean val);
+    
+    public Set<Author> getAuthors();
+    
+    public void setAuthors(Set<Author> authors);
 }

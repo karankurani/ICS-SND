@@ -3,6 +3,7 @@ package ICS.SND.Utilities;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import ICS.SND.Entities.Author;
 import ICS.SND.Entities.DivergenceEntry;
 import ICS.SND.Entities.Entry;
 
@@ -14,6 +15,7 @@ public class HibernateUtil {
         try {
             AnnotationConfiguration config = new AnnotationConfiguration().configure("hibernate.cfg.xml");
             config.addPackage("ICS.SND.Entities")
+            .addAnnotatedClass(Author.class)
             .addAnnotatedClass(Entry.class)
             .addAnnotatedClass(DivergenceEntry.class);
             return config.buildSessionFactory();

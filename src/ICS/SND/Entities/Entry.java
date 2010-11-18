@@ -1,6 +1,11 @@
 package ICS.SND.Entities;
 
+import java.util.*;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import ICS.SND.Interfaces.IEntry;
 
 @Entity
@@ -20,6 +25,19 @@ public class Entry implements IEntry {
 	private String referenceIndexNumbers;
     private String type;
     private boolean isSeed;
+    public Set<Author> authors = new HashSet<Author>(0);
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    @Override
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    @Override
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
 
     @Override
 	public void setId(int id) {
