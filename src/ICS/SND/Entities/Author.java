@@ -28,6 +28,5 @@ public class Author {
  
     public void setAuthorId(int authorId) {
         this.id = authorId;
-    }
-    
+    }    
 }

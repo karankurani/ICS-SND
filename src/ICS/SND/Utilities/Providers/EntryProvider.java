@@ -1,5 +1,6 @@
 package ICS.SND.Utilities.Providers;
 
+import ICS.SND.Entities.Author;
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IQuery;
@@ -29,6 +30,13 @@ public class EntryProvider {
         log.debug("listing title " + title);
         IQuery q = new ICS.SND.Entities.Query("from Entry where title=:title");
         q.setParameter("title", title);
+        return (List<IEntry>) provider.List(q);
+    }
+    
+    public List<IEntry> ListByAuthor(Author author) {
+    	log.debug("listing by author " + author.getAuthorName());
+        IQuery q = new ICS.SND.Entities.Query("from Entry e where :author in elements(e.authors)");
+        q.setParameter("author", author);
         return (List<IEntry>) provider.List(q);
     }
 

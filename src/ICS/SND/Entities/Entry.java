@@ -25,7 +25,7 @@ public class Entry implements IEntry {
 	private String referenceIndexNumbers;
     private String type;
     private boolean isSeed;
-    public Set<Author> authors = new HashSet<Author>(0);
+    private Set<Author> authors = new HashSet<Author>(0);
 
     @ManyToMany(cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
@@ -199,4 +199,10 @@ public class Entry implements IEntry {
     public void setIsSeed(boolean val) {
         this.isSeed = val;
     }
+
+	public void addAuthor(Author author) {
+		if(!authors.contains(author)) {
+			authors.add(author);
+		}
+	}
 }

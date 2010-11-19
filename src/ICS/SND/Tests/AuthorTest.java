@@ -1,68 +1,57 @@
 package ICS.SND.Tests;
 
-import java.util.*;
-
+import org.apache.log4j.Logger;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ICS.SND.Entities.Author;
 import ICS.SND.Entities.Entry;
 import ICS.SND.Entities.Query;
-import ICS.SND.Interfaces.IDataProvider;
-import ICS.SND.Interfaces.IEntry;
 import ICS.SND.Interfaces.IQuery;
 import ICS.SND.Utilities.Providers.HibernateDataProvider;
 
 public class AuthorTest {
-    
+	private static final Logger log = Logger.getLogger(AuthorTest.class);
+	private static HibernateDataProvider<Entry> entryProvider;
+	private static HibernateDataProvider<Author> authorProvider;
+
+	@BeforeClass
+	public static void setup(){
+		authorProvider = new HibernateDataProvider<Author>();
+		entryProvider = new HibernateDataProvider<Entry>();
+	}
+	
+	@AfterClass
+    public static void cleaup() {
+		log.debug("starting teardown");
+		IQuery qry = new Query("from Author where authorname=:authorname");
+		qry.setParameter("authorname", "Jason");
+		Author a = authorProvider.Load(qry);
+		authorProvider.Delete(a);
+		qry.setParameter("authorname", "Karan");
+		a = authorProvider.Load(qry);
+		authorProvider.Delete(a);
+		qry = new Query("from Entry where title=:title");
+		qry.setParameter("title", "Some Book");
+		Entry e = entryProvider.Load(qry);
+		entryProvider.Delete(e);
+		log.debug("ending teardown");
+	}
+	
     @Test
     public void createAuthor(){
-         
-        IDataProvider<Entry> entryProvider = new HibernateDataProvider<Entry>();
-        IDataProvider<Author> authorProvider = new HibernateDataProvider<Author>();
-        
-        for(int i=681946;i<1632444;i++){
-            IQuery q = new Query("from Entry where indexNumber = '"+ i +"'");
-            Entry e = (Entry) entryProvider.Load(q);
-            if(e!=null){
-                String[] splits = e.getAuthor().split(",");
-                System.out.println(e.getIndexNumber() + " " + e.getAuthor());
-                Set<Author> aSet = new HashSet<Author>();
-                
-                for(String author : splits){
-//                    System.out.println(author);
-                    author = author.trim();
-                    q = new Query("from Author where authorName = :author");
-                    q.setParameter("author", author);
-                    Author existingAuthor = (Author) authorProvider.Load(q);
-                    if(existingAuthor==null){
-                        Author a = new Author();
-                        a.setAuthorName(author);
-                        authorProvider.Save(a);
-                        aSet.add(a);
-                    }
-                    else{
-                        boolean val=true;
-                        Iterator<Author> iter = aSet.iterator();
-                        while(iter.hasNext()){
-                            Author tempA = (Author) iter.next();
-                            if(tempA.getAuthorName().equals(existingAuthor.getAuthorName())){
-                                val = false;
-                                break;
-                            }
-                        }
-                        
-                        if(val){
-                            aSet.add(existingAuthor);
-                        }
-                    }
-                }     
-                e.setAuthors(aSet);
-                entryProvider.Update(e);
-            }
-            else{
-                System.out.println("Entry with indexNumber " + i + " does not exist");
-            }
-        }
-     
+    	Author author1 = new Author();
+    	author1.setAuthorName("Jason");
+    	authorProvider.Save(author1);
+    	Author author2 = new Author();
+    	author2.setAuthorName("Karan");
+    	authorProvider.Save(author2);    	
+    	Entry e = new Entry();
+    	e.setTitle("Some Book");
+    	e.addAuthor(author1);
+    	e.addAuthor(author1);
+    	e.addAuthor(author2);
+    	entryProvider.Save(e);
     }
 }
