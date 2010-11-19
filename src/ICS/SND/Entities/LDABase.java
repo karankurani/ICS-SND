@@ -17,11 +17,11 @@ public class LDABase implements Serializable
 	private static final long serialVersionUID = -530485173822375971L;
 	int minTokenCount = 1;
 	short numTopics = 15;
-	double topicPrior = 0.1;
-	double wordPrior = 0.01;
-	public int burninEpochs = 0;
+	double topicPrior = 0.067;
+	double wordPrior = 0.001;
+	public int burninEpochs = 100;
 	public int sampleLag = 1;
-	public int numSamples = 200;
+	public int numSamples = 2000;
 	long randomSeed = 6474835;
 	public CharSequence[] articleTexts;
 	public SymbolTable symbolTable;

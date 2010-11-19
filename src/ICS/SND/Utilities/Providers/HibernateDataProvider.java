@@ -1,5 +1,7 @@
 package ICS.SND.Utilities.Providers;
 
+import ICS.SND.Entities.Author;
+import ICS.SND.Entities.Entry;
 import ICS.SND.Interfaces.IDataProvider;
 import ICS.SND.Interfaces.IQuery;
 import ICS.SND.Utilities.HibernateUtil;
@@ -53,6 +55,15 @@ public class HibernateDataProvider<T> implements IDataProvider<T> {
         return list;
     }
 
+    @Override
+    public List<T> ListBySQL(String sql){
+        List<T> list;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createSQLQuery(sql).addEntity(Entry.class);
+        list = (List<T>) q.list();
+        session.close();
+        return list;
+    }
     @Override
     public void Delete(T item) {
         Session session = HibernateUtil.getSessionFactory().openSession();

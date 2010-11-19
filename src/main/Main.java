@@ -28,13 +28,13 @@ public class Main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-	    getUnsortedList();
-	    sortList();
+//	    getUnsortedList();
+//	    sortList();
 	}	
 	private static void sortList() throws IOException{
         // TODO Auto-generated method stub
-	    BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLOutputFiles/Divergence.txt"));
-	    FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/SortedDivergence.txt");
+	    BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLOutputFiles/DivergenceRun5.txt"));
+	    FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/SortedDivergenceRun5.txt");
         BufferedWriter writer = new BufferedWriter(fw);
         String line;
         String[] lines = new String[700000];
@@ -79,7 +79,7 @@ public class Main {
 	    LDABase lbase = new LDABase(UnitTests.DATA_PATH +"ldaSeedInput.txt");
 
         PrintStream ps = new PrintStream(new File("C:/KiyanHadoop/ldaKLOutput.txt"));
-//      System.setOut(ps);
+        System.setOut(ps);
 
         lbase.startEpochs();
         String line = "";
@@ -106,7 +106,7 @@ public class Main {
         double currDivergence = 10000;
         String[] splitS;
         
-        FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/Divergence.txt");
+        FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/DivergenceRun5.txt");
         BufferedWriter writer = new BufferedWriter(fw);    
         for(int k=0;k<count;k++){
             dp.setDivergence(10000);
@@ -120,7 +120,7 @@ public class Main {
                     continue;
                 }
                 
-                bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 200, lbase.burninEpochs, lbase.sampleLag, new Random());
+                bayesEstimate = lbase.lda.bayesTopicEstimate(docTokens, 100, lbase.burninEpochs, lbase.sampleLag, new Random());
                 for(int j=0;j<bayesEstimate.length;j++){
                     if(bayesEstimate[j]==0){
                         bayesEstimate[j]=0.0000000001;

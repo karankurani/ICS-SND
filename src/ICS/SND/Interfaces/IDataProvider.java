@@ -13,4 +13,6 @@ public interface IDataProvider<T> {
     List<T> List(IQuery q);
 
     void Delete(T item);
+
+    List<T> ListBySQL(String query);
 }

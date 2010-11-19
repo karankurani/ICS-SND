@@ -35,9 +35,9 @@ public class EntryProvider {
     
     public List<IEntry> ListByAuthor(Author author) {
     	log.debug("listing by author " + author.getAuthorName());
-        IQuery q = new ICS.SND.Entities.Query("from Entry e where :author in elements(e.authors)");
-        q.setParameter("author", author);
-        return (List<IEntry>) provider.List(q);
+        return (List<IEntry>) provider.ListBySQL("select * from Entry e left outer join entry_author ea on ea.Entry_id = e.id" 
+                                                + " left outer join author a on a.authorId = ea.authors_authorId"
+                                                + " where a.authorId =" + author.getAuthorId());
     }
 
     public void Save(IEntry entry) {

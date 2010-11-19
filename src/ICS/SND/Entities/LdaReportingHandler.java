@@ -28,12 +28,12 @@ public class LdaReportingHandler implements ObjectHandler<LatentDirichletAllocat
                           sample.epoch(),
                           Strings.msToString(System.currentTimeMillis() - mStartTime));
 
-        //if ((sample.epoch() % 10) == 0) 
-		//{
+        if ((sample.epoch() % 10) == 0) 
+		{
             double corpusLog2Prob = sample.corpusLog2Probability();
             System.out.println("      log2 p(corpus|phi,theta)=" + corpusLog2Prob
                                + "     token cross-entropy rate=" + (-corpusLog2Prob/sample.numTokens()));
-        //}
+        }
     }
 
     void fullReport(LatentDirichletAllocation.GibbsSample sample,
