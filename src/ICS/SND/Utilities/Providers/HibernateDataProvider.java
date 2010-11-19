@@ -64,6 +64,7 @@ public class HibernateDataProvider<T> implements IDataProvider<T> {
         session.close();
         return list;
     }
+    
     @Override
     public void Delete(T item) {
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -8,30 +8,75 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
+
+import ICS.SND.Entities.Author;
 import ICS.SND.Entities.DivergencePaper;
+import ICS.SND.Entities.Entry;
 import ICS.SND.Entities.LDABase;
+import ICS.SND.Entities.Query;
+import ICS.SND.Interfaces.IEntry;
+import ICS.SND.Interfaces.IQuery;
+import ICS.SND.Tests.AuthorTest;
 import ICS.SND.Tests.UnitTests;
 import ICS.SND.Utilities.DivergencePaperComparator;
+import ICS.SND.Utilities.Providers.EntryProvider;
+import ICS.SND.Utilities.Providers.HibernateDataProvider;
 
 import com.aliasi.stats.Statistics;
 
 public class Main {
-
+    private static final Logger log = Logger.getLogger(Main.class);
 	/**
 	 * @param args
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
+	    listByAuthors();
 //	    getUnsortedList();
 //	    sortList();
 	}	
-	private static void sortList() throws IOException{
+	private static void listByAuthors() {
+	    FileWriter fw;
+        try {
+            fw = new FileWriter("AuthorOutput.txt");
+            BufferedWriter writer = new BufferedWriter(fw);
+            
+            HibernateDataProvider<Author> authorProvider 
+                = new HibernateDataProvider<Author>();
+            EntryProvider entryProvider = new EntryProvider();
+            
+            IQuery qry = new Query("from Author");
+            List<Author> authors = authorProvider.List(qry);
+            
+            for(Author author : authors) {
+                log.debug(MessageFormat.format("author: {0}", author.getAuthorName()));
+                List<IEntry> entries = entryProvider.ListByAuthor(author);
+                writer.write(MessageFormat.format("{0}<break>", 
+                        author.getAuthorId()));
+                for(IEntry entry : entries) {
+                    log.debug(MessageFormat.format("\t* paper: {0}", 
+                            entry.getTitle()));
+                    writer.write(MessageFormat.format("{0},", 
+                            entry.getIndexNumber()));
+                }
+                writer.write("\n");
+                writer.flush();
+            }
+            writer.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void sortList() throws IOException{
         // TODO Auto-generated method stub
 	    BufferedReader br = new BufferedReader(new FileReader("C:/KiyanHadoop/KLOutputFiles/DivergenceRun5.txt"));
 	    FileWriter fw = new FileWriter("C:/KiyanHadoop/KLOutputFiles/SortedDivergenceRun5.txt");
