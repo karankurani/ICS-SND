@@ -12,6 +12,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 
@@ -39,10 +40,83 @@ public class Main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-	    listByAuthors();
-//	    getUnsortedList();
-//	    sortList();
+	    //Call your function here.
 	}	
+	private static void listAuthorEntry() throws IOException {
+		Hashtable<Integer, ArrayList<Integer>> table = new Hashtable<Integer, ArrayList<Integer>>(); 
+		
+		FileReader fr = new FileReader("C:/KiyanHadoop/EntryNAuthorId.txt");
+		BufferedReader br = new BufferedReader(fr);
+		FileWriter fw = new FileWriter("C:/KiyanHadoop/AuthorNEntryId.txt");
+		BufferedWriter writer = new BufferedWriter(fw);
+		String line ="";
+		String[] splitS, authorIds;
+		String paperID;
+		ArrayList<Integer> paperList;
+//		int count = 10;
+		while((line=br.readLine())!=null){
+			splitS = line.split("<break>");
+			paperID = splitS[0];
+			authorIds = splitS[1].split(",");
+			if(authorIds!=null && authorIds.length >0){
+				for(String authorId : authorIds){
+					paperList = table.get(Integer.parseInt(authorId));
+					if(paperList==null){
+						paperList = new ArrayList<Integer>();
+						paperList.add(Integer.parseInt(paperID));
+						table.put(Integer.parseInt(authorId), paperList);
+						continue;
+					}
+					paperList.add(Integer.parseInt(paperID));
+				}	
+			}
+			else{
+				System.out.println("This paper has no author: " + paperID);
+			}
+//			count--;
+		}
+		for(int i=0;i<1033301;i++){
+			paperList = table.get(i);
+			if(paperList!=null && paperList.size()>0){
+				writer.write(i + "<break>");
+				for(int j : paperList){
+					writer.write(j+ ",");
+				}
+				writer.write("\n");
+			}
+			else{
+				System.out.println("This author has no paper: " + i);
+			}
+		}
+		writer.flush();
+	}
+	private static void listEntryAuthors() throws IOException{
+		FileWriter fw = new FileWriter("C:/KiyanHadoop/EntryNAuthorId.txt");
+        BufferedWriter writer = new BufferedWriter(fw);
+        Entry e;
+        Set <Author> aSet;
+        Author a;
+        EntryProvider provider = new EntryProvider();
+        for(int i=0;i<1632444;i++){
+        	e = (Entry) provider.LoadByIndexNumber(Integer.toString(i));
+        	if(e!=null){
+        		aSet = e.getAuthors();
+        		if(aSet.size()>0){
+        			java.util.Iterator<Author> iter = aSet.iterator();
+//                	System.out.print(e.getIndexNumber() + "<break>");
+                	writer.write(e.getIndexNumber() + "<break>");
+                	while(iter.hasNext()){
+//                		System.out.print(iter.next().getAuthorId()+",");
+                		writer.write(iter.next().getAuthorId()+",");
+                	}
+//                	System.out.print("\n");
+                	writer.write("\n");	
+        		}	
+        	}
+        }
+        writer.flush();
+        writer.close();
+	}
 	private static void listByAuthors() {
 	    FileWriter fw;
         try {
