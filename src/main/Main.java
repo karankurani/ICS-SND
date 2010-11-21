@@ -42,7 +42,60 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 	    //Call your function here.
+		listCoAuthors();
 	}	
+	private static void listCoAuthors() throws IOException {
+		
+		Hashtable<Integer, ArrayList<Integer>> table = new Hashtable<Integer, ArrayList<Integer>>(); 
+		
+		FileReader fr = new FileReader("C:/KiyanHadoop/EntryNAuthorId.txt");
+		BufferedReader br = new BufferedReader(fr);
+		FileWriter fw = new FileWriter("C:/KiyanHadoop/CoAuthorNetwork.txt");
+		BufferedWriter writer = new BufferedWriter(fw);
+		String line ="";
+		String[] splitS, authorIds;
+		ArrayList<Integer> authorList;
+		int count = 1000;
+		while((line=br.readLine())!=null){
+			splitS = line.split("<break>");
+			authorIds = splitS[1].split(",");
+			if(authorIds!=null && authorIds.length >0){
+				
+				for(String authorId : authorIds){
+					authorList = table.get(Integer.parseInt(authorId));
+					if(authorList==null){
+						authorList = new ArrayList<Integer>();
+//						authorList.add(Integer.parseInt(authorId));
+						table.put(Integer.parseInt(authorId), authorList);
+					}
+					for(String CoAuthorId : authorIds){
+						if(!CoAuthorId.equals(authorId)){
+							ArrayList<Integer> coAuthorList = table.get(Integer.parseInt(authorId));
+							if(!coAuthorList.contains(CoAuthorId)){
+								coAuthorList.add(Integer.parseInt(CoAuthorId));	
+							}	
+						}	
+					}
+				}	
+				
+			}
+		}
+		for(int i=0;i<1033301;i++){
+			authorList = table.get(i);
+			if(authorList!=null && authorList.size()>0){
+				writer.write(i + "<break>");
+				for(int j : authorList){
+					writer.write(j+ ",");
+				}
+				writer.write("\n");
+			}
+			else{
+				System.out.println("This author has no co author: " + i);
+			}
+		}
+		writer.flush();
+	}
+	
 	private static void listAuthorEntry() throws IOException {
 		Hashtable<Integer, ArrayList<Integer>> table = new Hashtable<Integer, ArrayList<Integer>>(); 
 		
