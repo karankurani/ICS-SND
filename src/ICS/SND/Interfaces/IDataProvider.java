@@ -15,4 +15,5 @@ public interface IDataProvider<T> {
     void Delete(T item);
 
     List<T> ListBySQL(String query);
+
 }
