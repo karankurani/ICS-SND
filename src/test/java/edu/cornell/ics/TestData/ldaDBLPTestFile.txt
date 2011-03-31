@@ -1,0 +1,31 @@
+Yuri Breitbart|Hector Garcia-Molina|Abraham Silberschatz~Transaction Management in Multidatabase Systems.~null~null
+Yuri Breitbart|Tom C. Reyes~Overview of the ADDS System.~null~null
+Stavros Christodoulakis|Leonidas Koveos~Multimedia Information Systems: Issues and Approaches.~null~null
+Angelika Kotz Dittrich|Klaus R. Dittrich~Where Object-Oriented DBMSs Should Do Better: A Critique Based on Early Experiences.~null~null
+Nathan Goodman~An Object-Oriented DBMS War Story: Developing a Genome Mapping Database in C++.~null~null
+Gail E. Kaiser~Cooperative Transactions for Multiuser Environments.~null~null
+William Kelley|Sunit K. Gala|Won Kim|Tom C. Reyes|Bruce Graham~Schema Architecture of the UniSQL/M Multidatabase System~null~null
+Alfons Kemper|Guido Moerkotte~Physical Object Management.~null~null
+Won Kim~Introduction to Part 1: Next-Generation Database Technology.~null~null
+Won Kim~Introduction to Part 2: Technology for Interoperating Legacy Databases.~null~null
+Won Kim|Jorge F. Garza~Requirements for a Performance Benchmark for Object-Oriented Database Systems.~null~null
+Won Kim|William Kelley~On View Support in Object-Oriented Databases Systems.~null~null
+David Krieger|Tim Andrews~C++ Bindings to an Object Database.~null~null
+Teresa F. Lunt~Authorization in Object-Oriented Databases.~null~null
+Weiyi Meng|Clement T. Yu~Query Processing in Multidatabase Systems.~null~null
+Amihai Motro~Management of Uncerainty in database Systems.~null~null
+Edward Omiecinski~Parallel Relational Database Systems.~null~null
+M. Tamer |Jos~Query Processing in Object-Oriented Database Systems.~null~null
+Marek Rusinkiewicz|Amit P. Sheth~Specification and Execution of Transactional Workflows.~null~Handling Dynamic Schema Change in Process Models. Handling Dynamic Schema Change in Process Models. Handling Dynamic Schema Change in Process Models. Handling Dynamic Schema Change in Process Models. Handling Dynamic Schema Change in Process Models. 
+Hanan Samet~Spatial Data Structures.~An overview is presented of the use of spatial data structures in spatial databases. The focus is on hierarchical data structures, including a number of variants of quadtrees, which sort the data with respect to the space occupied by it. Such techniques are known as spatial indexing methods. Hierarchical data structures are based on the principle of recursive decomposition. They are attractive because they are compact and depending on the nature of the data they save space as well as time and also facilitate operations such as search. Examples are given of the use of these data structures in the representation of different data types such as regions, points, rectangles, lines, and volumes.~The Design and Analysis of Spatial Data Structures The Design and Analysis of Spatial Data Structures The Design and Analysis of Spatial Data Structures The Design and Analysis of Spatial Data Structures The Design and Analysis of Spatial Data Structures 
+Hanan Samet|Walid G. Aref~Spatial Data Models and Query Processing.~null~null
+Ming-Chien Shan|Rafi Ahmed|Jim Davis|Weimin Du|William Kent~Pegasus: A Heterogeneous Information Management System.~null~null
+Richard T. Snodgrass~Temporal Object-Oriented Databases: A Critical Comparison.~null~null
+Richard Mark Soley|William Kent~The OMG Object Model.~null~null
+Ralph L. Stout~EDA/SQL.~null~null
+Craig W. Thompson~The Changing Database Standards Landscape.~null~null
+~Modern Database Systems: The Object Model, Interoperability, and Beyond.~null~null
+Albert W. Marshall|Ingram Olkin~Inequalities: Theory of Majorization and Its Application.~null~null
+Anders Bj|Christer Hulten~Version Control in an Object-Oriented Architecture.~null~null
+Robert Bretl|David Maier|Allen Otis|D. Jason Penney|Bruce Schuchardt|Jacob Stein|E. Harold Williams|Monty Williams~The GemStone Data Management System.~null~null
+Michael J. Carey|David J. DeWitt|Joel E. Richardson|Eugene J. Shekita~Storage Management in EXODUS.~null~null

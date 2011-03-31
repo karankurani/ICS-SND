@@ -1,0 +1,37 @@
+31	0.071120058689395	Modelling disease outbreaks in realistic urban social networks.
+11	1.0043056778217712	EpiSimdemics: an efficient algorithm for simulating the spread of infectious disease over large realistic social networks.
+34	1.370110326421632	A graph-theory framework for evaluating landscape connectivity and conservation planning.
+26	1.436684524747489	If Smallpox Strikes Portland
+6	2.127319505606476	Community Computing: Comparisons between Rural and Urban Societies Using Mobile Phone Data.
+4	2.447083527454412	BioWar: Scalable Agent-Based Model of Bioattacks.
+29	3.368372456835213	Scale transfer modeling: using emergent computation for coupling an ordinary differential equation system with a reactive agent model
+17	3.7216884970721082	Near-optimal Observation Selection using Submodular Functions.
+33	4.073794832888343	Using circuit theory to model connectivity in ecology, evolution, and conservation.
+23	4.312430703619272	Spatial-temporal causal modeling for climate change attribution.
+28	4.84601547873158	Mining citizen science data to predict prevalence of wild bird species
+10	5.14299215067096	Environmental sustainability and interaction.
+9	5.364155344614665	Discovery of Patterns in Global Earth Science Data Using Data Mining.
+7	5.535165858250053	Data Mining for Modeling Chiller Systems in Data Centers.
+1	5.937384285262635	A graph theory approach for designing conservation reserve networks with minimal fragmentation.
+24	6.130973332951161	Sustainable operation and management of data center chillers using temporal data mining.
+19	6.162984351246909	Ontologies for ecoinformatics.
+2	6.261760426995007	A Hybrid Agent Based and Differential Equation Model of Body Size Effects on Pathogen Replication and Immune System Response.
+35	6.413208798932567	Intelligent agents for the smart grid
+14	6.473943621489458	Land cover change detection: a case study.
+30	6.512270722496865	Maximum Entropy Density Estimation with Generalized Regularization and an Application to Species Distribution Modeling
+15	6.676294864965994	Machine Learning in Ecosystem Informatics.
+18	6.776105332720156	Neural network forecasts of the tropical Pacific sea surface temperatures.
+3	6.840618374919491	A maximum entropy approach to species distribution modeling.
+13	6.877499758037493	Integrating ecoinformatics resources on the semantic web.
+25	7.027997389167671	txteagle: Mobile Crowdsourcing.
+16	7.114077523675894	Mapping the landscape of sustainable HCI.
+22	7.299922739172786	Some Computer Science Issues in Creating a Sustainable World.
+21	7.308288645412474	Solving Connected Subgraph Problems in Wildlife Conservation.
+0	7.522772810995196	A comparison of bayesian and conditional density models in probabilistic ozone forecasting.
+36	7.620463308603055	Agent-based micro-storage management for the Smart Grid
+12	7.855840435096566	Evaluating Agent-Based Modeling as a Tool for Economists.
+8	7.870434453312543	Discovery of climate indices using clustering.
+20	8.128163693532764	Optimal reserve site selection with distance requirements.
+5	8.247017508053778	Collective Inference on Markov Models for Modeling Bird Migration.
+32	8.284817286948726	Rapid identification of structural phases in combinatorial thin-film libraries using x-ray diffraction and non-negative matrix factorization.
+27	8.303162050017937	How trees and forests inform biodiversity and ecosystem informatics
