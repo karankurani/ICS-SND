@@ -1,16 +1,16 @@
 package edu.cornell.ics.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import javax.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Author {
     private int id;
     private String authorName;
-    
+    private Set<Author> coAuthors = new HashSet<Author>(0);
+
     @Column(length = 1024)
     public String getAuthorName() {
         return authorName;
@@ -30,16 +30,27 @@ public class Author {
         this.id = authorId;
     }
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch=FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     public Set<Author> getCoAuthors() {
         return coAuthors;
     }
 
+    private void setCoAuthors(Set<Author> val) {
+        coAuthors = val;
+    }
+
     public void addCoAuthor(Author a) {
-        if(coAuthors == null) {
-            coAuthors = new HashSet<Author>();
-        }
         coAuthors.add(a);
+        if(!a.getCoAuthors().contains(this)){
+            a.addCoAuthor(this);
+        }
+    }
+
+    public void removeCoAuthor(Author a){
+        coAuthors.remove(a);
+        if(a.getCoAuthors().contains(this)){
+            a.removeCoAuthor(this);
+        }
     }
 }
