@@ -28,5 +28,18 @@ public class Author {
  
     public void setAuthorId(int authorId) {
         this.id = authorId;
-    }    
+    }
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    public Set<Author> getCoAuthors() {
+        return coAuthors;
+    }
+
+    public void addCoAuthor(Author a) {
+        if(coAuthors == null) {
+            coAuthors = new HashSet<Author>();
+        }
+        coAuthors.add(a);
+    }
 }
