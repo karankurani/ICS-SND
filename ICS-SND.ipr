@@ -48,6 +48,13 @@
     <option name="LOCALE" />
     <option name="OPEN_IN_BROWSER" value="true" />
   </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
@@ -169,22 +176,13 @@
       </item>
     </group>
   </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="jason">
-      <words>
-        <w>amazoner</w>
-        <w>booktitle</w>
-        <w>woot</w>
-      </words>
-    </dictionary>
-  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ICS-SND.iml" filepath="$PROJECT_DIR$/ICS-SND.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
@@ -193,59 +191,16 @@
     <mapping directory="" vcs="" />
   </component>
   <component name="libraryTable">
-    <library name="build">
+    <library name="Maven: junit:junit:3.8.1">
       <CLASSES>
-        <root url="file://$PROJECT_DIR$/lib" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1.jar!/" />
       </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-      <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
-    </library>
-    <library name="hibernate">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/hibernate-testing.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/hibernate3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="lib">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/dom4j.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/hibernate-commons-annotations.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/slf4j-api.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/hibernate-core.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/ejb3-persistence.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="required">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/javassist-3.12.0.GA.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/commons-collections-3.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/slf4j-api-1.6.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/dom4j-1.6.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/antlr-2.7.6.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate/lib/required/jta-1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="test">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/asm.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/log4j.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/junit.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/slf4j-log4j12.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/asm-attrs.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/antlr.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/javassist.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/commons-collections.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations/lib/test/jta.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-sources.jar!/" />
+      </SOURCES>
     </library>
   </component>
 </project>
