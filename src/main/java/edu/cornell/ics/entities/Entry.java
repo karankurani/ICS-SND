@@ -27,7 +27,7 @@ public class Entry implements IEntry {
     private boolean isSeed;
     private Set<Author> authors = new HashSet<Author>(0);
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @Fetch(FetchMode.JOIN)
     @Override
     public Set<Author> getAuthors() {
