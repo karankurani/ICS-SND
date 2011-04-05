@@ -31,7 +31,7 @@ public class Author {
     }
     
     @ManyToMany(fetch=FetchType.EAGER)
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.JOIN)    
     public Set<Author> getCoAuthors() {
         return coAuthors;
     }
