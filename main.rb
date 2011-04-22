@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'datamapper'
 require 'pp'
+require 'yaml'
 
 class Author
   include DataMapper::Resource
@@ -54,8 +55,8 @@ DataMapper.finalize
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'mysql://jrm425:verysecretpassword@192.168.37.2/ICSSND')
 
-entries = Entry.all :limit => 20, :abstractText.not => nil
+entries = Entry.all :limit => 200, :isSeed => true
 
-entries.each do |e|
-  puts e.title
-end
+f = File.open("output.yml", "w")
+f.puts entries.to_yaml
+f.close
