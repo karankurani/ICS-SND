@@ -2,9 +2,6 @@ require 'rubygems'
 require 'datamapper'
 require 'pp'
 
-gem 'lda-ruby', '0.3.2'
-require 'lda-ruby'
-
 class Author
   include DataMapper::Resource
   property :id, Serial
@@ -59,12 +56,6 @@ DataMapper.setup(:default, 'mysql://jrm425:verysecretpassword@192.168.37.2/ICSSN
 
 entries = Entry.all :limit => 20, :abstractText.not => nil
 
-corpus = Lda::Corpus.new
-entries.each do |entry|
-  doc = Lda::TextDocument.new(corpus, entry.abstractText)
-  corpus.add_document(doc)
+entries.each do |e|
+  puts e.title
 end
-
-lda = Lda::Lda.new(corpus)    # create an Lda object for training
-lda.em("random")              # run EM algorithm using random starting points
-lda.print_topics(20)          # print the topic 20 words per topic
