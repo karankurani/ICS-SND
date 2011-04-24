@@ -1,0 +1,541 @@
+--- 
+- :id: 16298
+  :abstractText: AI problems such as autonomous robotic exploration, automatic diagnosis and activity recognition have in common the need for choosing among a set of informative but possibly expensive observations. When monitoring spatial phenomena with sensor networks or mobile robots, for example, we need to decide which locations to observe in order to most effectively decrease the uncertainty, at minimum cost. These problems usually are NP-hard. Many observation selection objectives satisfy submodularity, an intuitive diminishing returns property - adding a sensor to a small deployment helps more than adding it to a large deployment. In this paper, we survey recent advances in systematically exploiting this submodularity property to efficiently achieve near-optimal observation selections, under complex constraints. We illustrate the effectiveness of our approaches on problems of monitoring environmental phenomena and water distribution networks.
+  :author: Andreas Krause,Carlos Guestrin
+  :booktitle: 
+  :entry: 
+  :indexNumber: "15797"
+  :isbn: 
+  :pages: 
+  :publisher: AAAI
+  :referenceIndexNumbers: 334939|334985|506315|412961|210266|472892
+  :title: Near-optimal Observation Selection using Submodular Functions.
+  :url: 
+  :year: "2007"
+  :isSeed: true
+  :type: 
+- :id: 40161
+  :abstractText: "The emerging field of Ecosystem Informatics applies methods from computer science and mathematics to address fundamental and applied problems in the ecosystem sciences. The ecosystem sciences are in the midst of a revolution driven by a combination of emerging technologies for improved sensing and the critical need for better science to help manage global climate change. This paper describes several initiatives at Oregon State University in ecosystem informatics. At the level of sensor technologies, this paper describes two projects: (a) wireless, battery-free sensor networks for forests and (b) rapid throughput automated arthropod population counting. At the level of data preparation and data cleaning, this paper describes the application of linear gaussian dynamic Bayesian networks to automated anomaly detection in temperature data streams. Finally, the paper describes two educational activities: (a) a summer institute in ecosystem informatics and (b) an interdisciplinary Ph.D. program in Ecosystem Informatics for mathematics, computer science, and the ecosystem sciences."
+  :author: Thomas G. Dietterich
+  :booktitle: 
+  :entry: 
+  :indexNumber: "39660"
+  :isbn: 
+  :pages: 
+  :publisher: ALT
+  :referenceIndexNumbers: 907687|1009564|1017583|907727|907746
+  :title: Machine Learning in Ecosystem Informatics.
+  :url: http://dx.doi.org/10.1007/978-3-540-75488-6_2
+  :year: "2007"
+  :isSeed: true
+  :type: 
+- :id: 91764
+  :abstractText: "By its nature, the discipline of human computer interaction must take into consideration the issues that are most pertinent to humans. We believe that the CHI community faces an unanswered challenge in the creation of interactive systems: sustainability. For example, climate scientists argue that the most serious consequences of climate change can be averted, but only if fundamental changes are made. The goal of this SIG is to raise awareness of these issues in the CHI community and to start a conversation about the possibilities and responsibilities we have to address issues of sustainability."
+  :author: Jennifer Mankoff,Eli Blevis,Alan Borning,Batya Friedman,Susan R. Fussell,Jay Hasbrouck,Allison Woodruff,Phoebe Sengers
+  :booktitle: 
+  :entry: 
+  :indexNumber: "91263"
+  :isbn: 
+  :pages: 
+  :publisher: CHI Extended Abstracts
+  :referenceIndexNumbers: 249421|237379|91058|174854
+  :title: Environmental sustainability and interaction.
+  :url: http://doi.acm.org/10.1145/1240866.1240963
+  :year: "2007"
+  :isSeed: true
+  :type: 
+- :id: 202377
+  :abstractText: 
+  :author: Margo Bergman
+  :booktitle: 
+  :entry: 
+  :indexNumber: "201876"
+  :isbn: 
+  :pages: 
+  :publisher: FAABS
+  :referenceIndexNumbers: 
+  :title: Evaluating Agent-Based Modeling as a Tool for Economists.
+  :url: http://springerlink.metapress.com/openurl.asp?genre=article
+  :year: "2002"
+  :isSeed: true
+  :type: 
+- :id: 335994
+  :abstractText: We study the problem of modeling species geographic distributions, a critical problem in conservation biology. We propose the use of maximum-entropy techniques for this problem, specifically, sequential-update algorithms that can handle a very large number of features. We describe experiments comparing maxent with a standard distribution-modeling tool, called GARP, on a dataset containing observation data for North American breeding birds. We also study how well maxent performs as a function of the number of training examples and training time, analyze the use of regularization to avoid overfitting when the number of examples is small, and explore the interpretability of models constructed using maxent.
+  :author: "Steven J. Phillips,Miroslav Dud\xC3\xADk,Robert E. Schapire"
+  :booktitle: 
+  :entry: 
+  :indexNumber: "335493"
+  :isbn: 
+  :pages: 
+  :publisher: ICML
+  :referenceIndexNumbers: 108837|825551|1009335|1032709|20423
+  :title: A maximum entropy approach to species distribution modeling.
+  :url: http://doi.acm.org/10.1145/1015330.1015412
+  :year: "2004"
+  :isSeed: true
+  :type: 
+- :id: 394655
+  :abstractText: 
+  :author: Song Cai,William W. Hsieh,Alex J. Cannon
+  :booktitle: 
+  :entry: 
+  :indexNumber: "394154"
+  :isbn: 
+  :pages: 
+  :publisher: IJCNN
+  :referenceIndexNumbers: 
+  :title: A comparison of bayesian and conditional density models in probabilistic ozone forecasting.
+  :url: http://dx.doi.org/10.1109/IJCNN.2008.4634117
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 473799
+  :abstractText: To analyze the effect of the oceans and atmosphere on land climate, Earth Scientists have developed climate indices, which are time series that summarize the behavior of selected regions of the Earth's oceans and atmosphere. In the past, Earth scientists have used observation and, more recently, eigenvalue analysis techniques, such as principal components analysis (PCA) and singular value decomposition (SVD), to discover climate indices. However, eigenvalue techniques are only useful for finding a few of the strongest signals. Furthermore, they impose a condition that all discovered signals must be orthogonal to each other, making it difficult to attach a physical interpretation to them. This paper presents an alternative clustering-based methodology for the discovery of climate indices that overcomes these limitiations and is based on clusters that represent regions with relatively homogeneous behavior. The centroids of these clusters are time series that summarize the behavior of the ocean or atmosphere in those regions. Some of these centroids correspond to known climate indices and provide a validation of our methodology; other centroids are variants of known indices that may provide better predictive power for some land areas; and still other indices may represent potentially new Earth science phenomena. Finally, we show that cluster based indices generally outperform SVD derived indices, both in terms of area weighted correlation and direct correlation with the known indices.
+  :author: Michael Steinbach,Pang-Ning Tan,Vipin Kumar,Steven A. Klooster,Christopher Potter
+  :booktitle: 
+  :entry: 
+  :indexNumber: "473298"
+  :isbn: 
+  :pages: 
+  :publisher: KDD
+  :referenceIndexNumbers: "2596"
+  :title: Discovery of climate indices using clustering.
+  :url: http://doi.acm.org/10.1145/956750.956801
+  :year: "2003"
+  :isSeed: true
+  :type: 
+- :id: 474239
+  :abstractText: The study of land cover change is an important problem in the Earth Science domain because of its impacts on local climate, radiation balance, biogeochemistry, hydrology, and the diversity and abundance of terrestrial species. Most well-known change detection techniques from statistics, signal processing and control theory are not well-suited for the massive high-dimensional spatio-temporal data sets from Earth Science due to limitations such as high computational complexity and the inability to take advantage of seasonality and spatio-temporal autocorrelation inherent in Earth Science data. In our work, we seek to address these challenges with new change detection techniques that are based on data mining approaches. Specifically, in this paper we have performed a case study for a new change detection technique for the land cover change detection problem. We study land cover change in the state of California, focusing on the San Francisco Bay Area and perform an extended study on the entire state. We also perform a comparative evaluation on forests in the entire state. These results demonstrate the utility of data mining techniques for the land cover change detection problem.
+  :author: Shyam Boriah,Vipin Kumar,Michael Steinbach,Christopher Potter,Steven A. Klooster
+  :booktitle: 
+  :entry: 
+  :indexNumber: "473738"
+  :isbn: 
+  :pages: 
+  :publisher: KDD
+  :referenceIndexNumbers: 473451|472745|302460|473298
+  :title: "Land cover change detection: a case study."
+  :url: http://doi.acm.org/10.1145/1401890.1401993
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 518495
+  :abstractText: 
+  :author: Daniel Sheldon,M. A. Saleh Elmohamed,Dexter Kozen
+  :booktitle: 
+  :entry: 
+  :indexNumber: "517994"
+  :isbn: 
+  :pages: 
+  :publisher: NIPS
+  :referenceIndexNumbers: 
+  :title: Collective Inference on Markov Models for Modeling Bird Migration.
+  :url: http://books.nips.cc/papers/files/nips20/NIPS2007_0525.pdf
+  :year: "2007"
+  :isSeed: true
+  :type: 
+- :id: 576567
+  :abstractText: Preventing and controlling outbreaks of infectious diseases such as pandemic influenza is a top public health priority. We describe EpiSimdemics - a scalable parallel algorithm to simulate the spread of contagion in large, realistic social contact networks using individual-based models. EpiSimdemics is an interaction-based simulation of a certain class of stochastic reaction-diffusion processes. Straightforward simulations of such process do not scale well, limiting the use of individual-based models to very small populations. EpiSimdemics is specifically designed to scale to social networks with 100 million individuals. The scaling is obtained by exploiting the semantics of disease evolution and disease propagation in large networks. We evaluate an MPI-based parallel implementation of EpiSimdemics on a mid-sized HPC system, demonstrating that EpiSimdemics scales well. EpiSimdemics has been used in numerous sponsor defined case studies targeted at policy planning and course of action analysis, demonstrating the usefulness of EpiSimdemics in practical situations.
+  :author: Christopher L. Barrett,Keith R. Bisset,Stephen Eubank,Xizhou Feng,Madhav V. Marathe
+  :booktitle: 
+  :entry: 
+  :indexNumber: "576066"
+  :isbn: 
+  :pages: 
+  :publisher: SC
+  :referenceIndexNumbers: 671522|567131|771888|610461|671926
+  :title: "EpiSimdemics: an efficient algorithm for simulating the spread of infectious disease over large realistic social networks."
+  :url: http://doi.acm.org/10.1145/1413370.1413408
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 675072
+  :abstractText: We describe ELVIS (the Ecosystem Location Visualization and Information System), a suite of tools for constructing food webs for a given location. We express both ELVIS input and output data in OWL, thereby enabling its integration with other semantic web resources. In particular, we describe using a Triple Shop application to answer SPARQL queries from a collection of semantic web documents. This is an end-to-end case study of the semantic web's utility for ecological and environmental research.
+  :author: Cynthia Sims Parr,Andriy Parafiynyk,Joel Sachs,Li Ding,Sandor Dornbush,Timothy W. Finin,David Wang,Allan Hollander
+  :booktitle: 
+  :entry: 
+  :indexNumber: "674571"
+  :isbn: 
+  :pages: 
+  :publisher: WWW
+  :referenceIndexNumbers: 928772|95215
+  :title: Integrating ecoinformatics resources on the semantic web.
+  :url: http://doi.acm.org/10.1145/1135777.1136021
+  :year: "2006"
+  :isSeed: true
+  :type: 
+- :id: 809793
+  :abstractText: Computer scientists have a role to play in combating global climate change.
+  :author: Jennifer Mankoff,Robin Kravets,Eli Blevis
+  :booktitle: 
+  :entry: 
+  :indexNumber: "809292"
+  :isbn: 
+  :pages: 
+  :publisher: IEEE Computer
+  :referenceIndexNumbers: 
+  :title: Some Computer Science Issues in Creating a Sustainable World.
+  :url: 
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 815252
+  :abstractText: The reserve set covering problem minimizes the total cost or area of sites needed to represent all species within a system of nature reserves, but does not address spatial characteristics such as distances between reserve sites. Inter-site distance, as a surrogate for connectivity, is likely to affect species persistence and other functional aspects of reserve systems. Two new 0-1 programming models that build upon the reserve set covering problem are formulated for controlling inter-site distance. Depending on the circumstances, longer or shorter inter-site distances may be desirable, and arguments for each case are discussed. The first model requires reserves to be at least a minimum separation distance apart. The second model requires at least two representations of each species and also requires the sites that represent a species to be no farther apart than a stated proximity distance. These models are applied to four demonstration problems in which both synthetic and real presence/absence data are used. Results and computational experience are discussed. The first model achieves site dispersal while the second model achieves site connectivity to the extent that each is compatible with set covering.
+  :author: Justin C. Williams
+  :booktitle: 
+  :entry: 
+  :indexNumber: "814751"
+  :isbn: 
+  :pages: 
+  :publisher: Computers & OR
+  :referenceIndexNumbers: 
+  :title: Optimal reserve site selection with distance requirements.
+  :url: 
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 1025328
+  :abstractText: 
+  :author: "Hayri \xC3\x96nal,Yicheng Wang"
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1024827"
+  :isbn: 
+  :pages: 
+  :publisher: Networks
+  :referenceIndexNumbers: 
+  :title: A graph theory approach for designing conservation reserve networks with minimal fragmentation.
+  :url: 
+  :year: "2008"
+  :isSeed: true
+  :type: 
+- :id: 1027951
+  :abstractText: 
+  :author: Aiming Wu,William W. Hsieh,Benyang Tang
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1027450"
+  :isbn: 
+  :pages: 
+  :publisher: Neural Networks
+  :referenceIndexNumbers: 
+  :title: Neural network forecasts of the tropical Pacific sea surface temperatures.
+  :url: 
+  :year: "2006"
+  :isSeed: true
+  :type: 
+- :id: 1131356
+  :abstractText: 
+  :author: "Kathleen M. Carley,Douglas B. Fridsma,Elizabeth Casman,Alex Yahja,N. Altman,Li-Chiou Chen,Boris Kaminsky,D\xC3\xA9mian Nave"
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1130855"
+  :isbn: 
+  :pages: 
+  :publisher: IEEE Transactions on Systems, Man, and Cybernetics, Part A
+  :referenceIndexNumbers: 
+  :title: "BioWar: Scalable Agent-Based Model of Bioattacks."
+  :url: 
+  :year: "2006"
+  :isSeed: true
+  :type: 
+- :id: 1142287
+  :abstractText: Rapid advances in information technologies continue to drive a flood of data and analysis techniques in ecological and environmental sciences. Using these resources more effectively and taking advantage of associated cross-disciplinary research opportunities poses a major challenge to both scientists and information technologists. These challenges are now being addressed in projects that apply knowledge representation and Semantic Web technologies to problems in discovering and integrating ecological data and data analysis techniques. In this paper, we present an overview of the major ontological components of our project, SEEK (''Science Environment for Ecological Knowledge''). We describe the concepts and models that are represented in each, and present a discussion of potential applications of these ontologies on the Semantic Web.
+  :author: Richard J. Williams,Neo D. Martinez,Jennifer Golbeck
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1141786"
+  :isbn: 
+  :pages: 
+  :publisher: J. Web Sem.
+  :referenceIndexNumbers: "568852"
+  :title: Ontologies for ecoinformatics.
+  :url: 
+  :year: "2006"
+  :isSeed: true
+  :type: 
+- :id: 1211688
+  :abstractText: Attribution of climate change to causal factors has been based predominantly on simulations using physical climate models, which have inherent limitations in describing such a complex and chaotic system. We propose an alternative, data centric, approach that relies on actual measurements of climate observations and human and natural forcing factors. Specifically, we develop a novel method to infer causality from spatial-temporal data, as well as a procedure to incorporate extreme value modeling into our method in order to address the attribution of extreme climate events, such as heatwaves. Our experimental results on a real world dataset indicate that changes in temperature are not solely accounted for by solar radiance, but attributed more significantly to CO2 and other greenhouse gases. Combined with extreme value modeling, we also show that there has been a significant increase in the intensity of extreme temperatures, and that such changes in extreme temperature are also attributable to greenhouse gases. These preliminary results suggest that our approach can offer a useful alternative to the simulation-based approach to climate modeling and attribution, and provide valuable insights from a fresh perspective.
+  :author: Aurelie C. Lozano,Hongfei Li,Alexandru Niculescu-Mizil,Yan Liu 0002,Claudia Perlich,Jonathan R. M. Hosking,Naoki Abe
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1211187"
+  :isbn: 
+  :pages: 
+  :publisher: KDD
+  :referenceIndexNumbers: 
+  :title: Spatial-temporal causal modeling for climate change attribution.
+  :url: http://doi.acm.org/10.1145/1557019.1557086
+  :year: "2009"
+  :isSeed: true
+  :type: 
+- :id: 1211695
+  :abstractText: "Motivation: Data centers are a critical component of modern IT infrastructure but are also among the worst environmental offenders through their increasing energy usage and the resulting large carbon footprints. Efficient management of data centers, including power management, networking, and cooling infrastructure, is hence crucial to sustainability. In the absence of a 'first-principles' approach to manage these complex components and their interactions, data-driven approaches have become attractive and tenable. Results: We present a temporal data mining solution to model and optimize performance of data center chillers, a key component of the cooling infrastructure. It helps bridge raw, numeric, time-series information from sensor streams toward higher level characterizations of chiller behavior, suitable for a data center engineer. To aid in this transduction, temporal data streams are first encoded into a symbolic representation, next run-length encoded segments are mined to form frequent motifs in time series, and finally these metrics are evaluated by their contributions to sustainability. A key innovation in our application is the ability to intersperse \"don't care\" transitions (e.g., transients) in continuous-valued time series data, an advantage we inherit by the application of frequent episode mining to symbolized representations of numeric time series. Our approach provides both qualitative and quantitative characterizations of the sensor streams to the data center engineer, to aid him in tuning chiller operating characteristics. This system is currently being prototyped for a data center managed by HP and experimental results from this application reveal the promise of our approach."
+  :author: Debprakash Patnaik,Manish Marwah,Ratnesh K. Sharma,Naren Ramakrishnan
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1211194"
+  :isbn: 
+  :pages: 
+  :publisher: KDD
+  :referenceIndexNumbers: 1066858|472516|1185932|1063740|335983|642778|1113026|473764|303474|159075|839689|839560|91442|643473|302798|717960|473575
+  :title: Sustainable operation and management of data center chillers using temporal data mining.
+  :url: http://doi.acm.org/10.1145/1557019.1557159
+  :year: "2009"
+  :isSeed: true
+  :type: 
+- :id: 1241943
+  :abstractText: We present txteagle, a system that enables people to earn small amounts of money by completing simple tasks on their mobile phone for corporations who pay them in either airtime or MPESA (mobile money). The system is currently being launched in Kenya and Rwanda in collaboration with the mobile phone service providers Safaricom and MTN Rwanda. Tasks include translation, transcription, and surveys. User studies in Nairobi involving high school students, taxi drivers, and local security guards have been completed and the service has recently launched in Kenya nationwide.
+  :author: Nathan Eagle
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1241442"
+  :isbn: 
+  :pages: 
+  :publisher: HCI (14)
+  :referenceIndexNumbers: 
+  :title: "txteagle: Mobile Crowdsourcing."
+  :url: http://dx.doi.org/10.1007/978-3-642-02767-3_50
+  :year: "2009"
+  :isSeed: true
+  :type: 
+- :id: 1243410
+  :abstractText: Many emerging pathogens infect multiple host species [1], and multi-host pathogens may have very different dynamics in different host species [2]. This research addresses how pathogen replication rates and Immune System (IS) response times are constrained by host body size. An Ordinary Differential Equation (ODE) model is used to show that pathogen replication rates decline with host body size but IS response rates remain invariant with body size. An Agent-Based Model (ABM) is used to investigate two models of IS architecture that could explain scale invariance of IS response rates. A stage structured hybrid model is proposed that strikes a balance between the detailed representation of an ABM and computational tractability of an ODE, by using them in the initial and latter stages of an infection, respectively.
+  :author: Soumya Banerjee,Melanie E. Moses
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1242909"
+  :isbn: 
+  :pages: 
+  :publisher: ICARIS
+  :referenceIndexNumbers: 
+  :title: A Hybrid Agent Based and Differential Equation Model of Body Size Effects on Pathogen Replication and Immune System Response.
+  :url: http://dx.doi.org/10.1007/978-3-642-03246-2_5
+  :year: "2009"
+  :isSeed: true
+  :type: 
+- :id: 1258740
+  :abstractText: We present a comparative analysis of the behavioral dynamics of rural and urban societies using four years of mobile phone data from all 1.4M subscribers within a small country. We use information from communication logs and top up denominations to characterize attributes such as socioeconomic status and region. We show that rural and urban communities differ dramatically not only in terms of personal network topologies, but also in terms of inferred behavioral characteristics such as travel. We confirm the hypothesis for behavioral adaptation, demonstrating that individuals change their patterns of communication to increase the similarity with their new social environment. To our knowledge, this is the first comprehensive comparison between regional groups of this size.
+  :author: "Nathan Eagle,Yves-Alexandre de Montjoye,Lu\xC3\xADs M. A. Bettencourt"
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1258239"
+  :isbn: 
+  :pages: 
+  :publisher: CSE (4)
+  :referenceIndexNumbers: 
+  :title: "Community Computing: Comparisons between Rural and Urban Societies Using Mobile Phone Data."
+  :url: http://dx.doi.org/10.1109/CSE.2009.91
+  :year: "2009"
+  :isSeed: true
+  :type: 
+- :id: 1515206
+  :abstractText: With the recent growth in sustainable HCI, now is a good time to map out the approaches being taken and the intellectual commitments that underlie the area, to allow for community discussion about where the field should go. Here, we provide an empirical analysis of how sustainable HCI is defining itself as a research field. Based on a corpus of published works, we identify (1) established genres in the area, (2) key unrecognized intellectual differences, and (3) emerging issues, including urgent avenues for further exploration, opportunities for interdisciplinary engagement, and key topics for debate.
+  :author: "Carl F. DiSalvo,Phoebe Sengers,Hr\xC3\xB6nn Brynjarsd\xC3\xB3ttir"
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1514701"
+  :isbn: 
+  :pages: 
+  :publisher: CHI
+  :referenceIndexNumbers: 92409|92462|92264|92289|92301|92530|92490|92205
+  :title: Mapping the landscape of sustainable HCI.
+  :url: http://doi.acm.org/10.1145/1753326.1753625
+  :year: "2010"
+  :isSeed: true
+  :type: 
+- :id: 1517528
+  :abstractText: 
+  :author: Bistra N. Dilkina,Carla P. Gomes
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1517023"
+  :isbn: 
+  :pages: 
+  :publisher: CPAIOR
+  :referenceIndexNumbers: 
+  :title: Solving Connected Subgraph Problems in Wildlife Conservation.
+  :url: http://dx.doi.org/10.1007/978-3-642-13520-0_14
+  :year: "2010"
+  :isSeed: true
+  :type: 
+- :id: 1535070
+  :abstractText: 
+  :author: Debprakash Patnaik,Manish Marwah,Ratnesh K. Sharma,Naren Ramakrishnan
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1534565"
+  :isbn: 
+  :pages: 
+  :publisher: IDA
+  :referenceIndexNumbers: 
+  :title: Data Mining for Modeling Chiller Systems in Data Centers.
+  :url: http://dx.doi.org/10.1007/978-3-642-13062-5_13
+  :year: "2010"
+  :isSeed: true
+  :type: 
+- :id: 1545265
+  :abstractText: 
+  :author: Vipin Kumar
+  :booktitle: 
+  :entry: 
+  :indexNumber: "1544760"
+  :isbn: 
+  :pages: 
+  :publisher: PAKDD (1)
+  :referenceIndexNumbers: 
+  :title: Discovery of Patterns in Global Earth Science Data Using Data Mining.
+  :url: http://dx.doi.org/10.1007/978-3-642-13657-3_2
+  :year: "2010"
+  :isSeed: true
+  :type: 
+- :id: 1632949
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: If Smallpox Strikes Portland
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632950
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: How trees and forests inform biodiversity and ecosystem informatics
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632951
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Mining citizen science data to predict prevalence of wild bird species
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632952
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: "Scale transfer modeling: using emergent computation for coupling an ordinary differential equation system with a reactive agent model"
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632953
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Maximum Entropy Density Estimation with Generalized Regularization and an Application to Species Distribution Modeling
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632954
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Modelling disease outbreaks in realistic urban social networks.
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632955
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Rapid identification of structural phases in combinatorial thin-film libraries using x-ray diffraction and non-negative matrix factorization.
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632956
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: A graph-theory framework for evaluating landscape connectivity and conservation planning.
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632957
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Intelligent agents for the smart grid.
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
+- :id: 1632958
+  :abstractText: 
+  :author: 
+  :booktitle: 
+  :entry: 
+  :indexNumber: 
+  :isbn: 
+  :pages: 
+  :publisher: 
+  :referenceIndexNumbers: 
+  :title: Agent-based micro-storage management for the Smart Grid
+  :url: 
+  :year: 
+  :isSeed: true
+  :type: 
