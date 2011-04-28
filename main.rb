@@ -5,14 +5,14 @@ require './lib/entities.rb'
 require './lib/utilities.rb'
 
 log = DataMapper::Logger.new($stdout, :debug)
-err = DataMapper::Logger.new($stdout, :debug)
+#err = DataMapper::Logger.new($stdout, :info)
 DataMapper.setup(:default, CONNECTION)
 
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true)
+seed_entries = Entry.all(:isSeed => true, :limit => 3)
 
 while true do
-  log << "I made it inside the loop"
+  log << "\n***\n= getting authors =\n***\n"
   seed_authors = authors_of(seed_entries)
 
   log << seed_authors.map{ |x| x.name }.join(', ')
@@ -27,7 +27,6 @@ while true do
 
   log << "\n***\n= calling train lda =\n***\n"
   lda_model = train_lda(seed_entries)
-  log << "I made it here!"
 
   log << "\n***\n= getting ready to start scoring =\n***\n"
   score_vectors = {}
