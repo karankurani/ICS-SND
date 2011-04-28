@@ -48,4 +48,4 @@ class Citation
 end
 
 DataMapper.finalize
-DataMapper.setup(:default, 'mysql://jrm425:verysecretpassword@192.168.37.2/ICSSND')
+
