@@ -5,20 +5,30 @@ require './lib/entities.rb'
 require './lib/utilities.rb'
 
 log = DataMapper::Logger.new($stdout, :debug)
-err = DataMapper::Logger.new($stdout, :debug)
+#err = DataMapper::Logger.new($stdout, :info)
 DataMapper.setup(:default, CONNECTION)
 
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true)
+seed_entries = Entry.all(:isSeed => true, :limit => 3)
 
 while true do
-  log << "I made it inside the loop"
+  log << "\n***\n= getting authors =\n***\n"
   seed_authors = authors_of(seed_entries)
-  seed_co_authors = co_authors_of(seed_authors)
-  candidate_entries = entries_of(co_authors)
-  lda_model = train_lda(seed_entries)
-  log << "I made it here!"
 
+  log << seed_authors.map{ |x| x.name }.join(', ')
+
+  log << "\n***\n= getting co-authors =\n***\n"
+  seed_co_authors = co_authors_of(seed_authors)
+  log << seed_co_authors.map{ |x| x.name }.join(', ')
+
+  log << "\n***\n= getting entries of seed co-authors =\n***\n"
+  candidate_entries = entries_of(seed_co_authors)
+  log << candidate_entries.map{ |x| x.title }.join(', ')
+
+  log << "\n***\n= calling train lda =\n***\n"
+  lda_model = train_lda(seed_entries)
+
+  log << "\n***\n= getting ready to start scoring =\n***\n"
   score_vectors = {}
 
   candidate_entries.each do |entry|
