@@ -9,7 +9,7 @@ log = DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, CONNECTION)
 
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit => 3)
+seed_entries = Entry.all(:isSeed => true)
 
 while true do
   log << "\n***\n= getting authors =\n***\n"
@@ -19,7 +19,8 @@ while true do
 
   log << "\n***\n= getting co-authors =\n***\n"
   seed_co_authors = co_authors_of(seed_authors)
-  log << seed_co_authors.map{ |x| x.name }.join(', ')
+  #log << seed_co_authors.map{ |x| x.name }.join(', ')
+  log << "count of co-authors: #{seed_co_authors.size}"
 
   log << "\n***\n= getting entries of seed co-authors =\n***\n"
   candidate_entries = entries_of(seed_co_authors)
