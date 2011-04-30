@@ -14,7 +14,7 @@ CANDIDATES_FOR_LDA = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LDA/data/output/output.yml"))
 
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit => 2)
+seed_entries = Entry.all(:isSeed => true, :limit => 3)
 puts seed_entries.class
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 
@@ -31,7 +31,8 @@ while true do
 
   log << "\n***\n= getting entries of seed co-authors =\n***\n"
   candidate_entries = entries_of(seed_co_authors)
-  log << candidate_entries.map{ |x| x.title }.join(', ')
+  #log << candidate_entries.map{ |x| x.title }.join(', ')
+  log << "candidate papers: #{candidate_entries.size}"
   File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_a.to_yaml }
 
   log << "\n***\n= calling train lda =\n***\n"
@@ -42,16 +43,15 @@ while true do
 
   candidate_entries.each do |entry|
     # Citation Network Score
-    score_2 = seed_entries.map do |seed|
-      citation_distribution(entry, seed)
-    end.min
+   score_2 = seed_entries.map do |seed|
+     citation_distribution(entry, seed)
+   end.min
 
     # Co-Author Score
     score_3 = seed_entries.map do |seed|
-      (co_authors_of(authors_of(entry)) \
-        & authors_of(seed)).size
+      (co_authors_of(entry.authors) & seed.authors).size
     end.reduce(:+)
-
+    puts "#{score_3} #{entry.title}"
     # Reference Score
     score_4 = seed_entries.map do |seed|
       (seed.citations.include? entry) ? 1 : 0
