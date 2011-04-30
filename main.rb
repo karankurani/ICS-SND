@@ -14,7 +14,8 @@ CANDIDATES_FOR_LDA = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LDA/data/output/output.yml"))
 
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit => 1)
+seed_entries = Entry.all(:isSeed => true, :limit => 2)
+puts seed_entries.class
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 
 while true do
@@ -31,7 +32,7 @@ while true do
   log << "\n***\n= getting entries of seed co-authors =\n***\n"
   candidate_entries = entries_of(seed_co_authors)
   log << candidate_entries.map{ |x| x.title }.join(', ')
-  File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_yaml }
+  File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_a.to_yaml }
 
   log << "\n***\n= calling train lda =\n***\n"
   execute_LDA(INPUT_FOR_LDA, CANDIDATES_FOR_LDA, OUTPUT_FROM_LDA)

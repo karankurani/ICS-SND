@@ -1,7 +1,7 @@
 TIME_STAMP = Time.new.strftime("%Y-%m-%d-%H-%M-%S")
 ERR        = "./log/err-#{TIME_STAMP}.txt"
 LOG        = "./log/log-#{TIME_STAMP}.txt"
-CONNECTION = 'mysql://jrm425:verysecretpassword@192.168.37.2/ICSSND'
+CONNECTION = 'mysql://jrm425:verysecretpassword@127.0.0.1:3307/ICSSND'
 
 def authors_of(entries)
   entries.inject(Set.new) { |authors, entry| authors | entry.authors }
