@@ -5,12 +5,17 @@ require './lib/entities.rb'
 require './lib/utilities.rb'
 require './lib/LDA/execute_LDA.rb'
 
-log = DataMapper::Logger.new($stdout, :debug)
+log = DataMapper::Logger.new($stdout, :info)
 #err = DataMapper::Logger.new($stdout, :info)
 DataMapper.setup(:default, CONNECTION)
 
+INPUT_FOR_LDA      = File.expand_path(File.join(File.dirname(__FILE__), "./lib/LDA/data/input/input-for-lda-1.yml"))
+CANDIDATES_FOR_LDA = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LDA/data/input/candidates-for-lda.yml"))
+OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LDA/data/output/output.yml"))
+
 log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true)
+seed_entries = Entry.all(:isSeed => true, :limit => 1)
+File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 
 while true do
   log << "\n***\n= getting authors =\n***\n"
@@ -26,21 +31,15 @@ while true do
   log << "\n***\n= getting entries of seed co-authors =\n***\n"
   candidate_entries = entries_of(seed_co_authors)
   log << candidate_entries.map{ |x| x.title }.join(', ')
-	f = File.open("lib/LDA/data/input/lda-seed-input-1.yml","w")
-	f.puts candidate_entries.to_yaml
-	f.close
+  File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_yaml }
+
   log << "\n***\n= calling train lda =\n***\n"
-  lda_model = train_lda(seed_entries)
+  execute_LDA(INPUT_FOR_LDA, CANDIDATES_FOR_LDA, OUTPUT_FROM_LDA)
 
   log << "\n***\n= getting ready to start scoring =\n***\n"
   score_vectors = {}
 
   candidate_entries.each do |entry|
-    # LDA Similarity
-    score_1 = seed_entries.map do |seed|
-      lda_similarity(entry, seed, lda_model)
-    end.max
-
     # Citation Network Score
     score_2 = seed_entries.map do |seed|
       citation_distribution(entry, seed)
