@@ -34,6 +34,7 @@ class Entry
   property :year                 , String
   property :isSeed               , Boolean, :default => false
   property :type                 , String
+  property :isCompSust           , Boolean, :default => false
   has n, :authors, :through => Resource
 
   has n, :citations, :child_key => [ :source_id ]
