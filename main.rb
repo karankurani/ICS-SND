@@ -51,7 +51,7 @@ while true do
     score_3 = seed_entries.map do |seed|
       (co_authors_of(entry.authors) & seed.authors).size
     end.reduce(:+)
-    puts "#{score_3} #{entry.title}"
+    #puts "#{score_3} #{entry.title}"
     # Reference Score
     score_4 = seed_entries.map do |seed|
       (seed.citations.include? entry) ? 1 : 0
