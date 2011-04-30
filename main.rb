@@ -3,6 +3,7 @@ require 'pp'
 require 'yaml'
 require './lib/entities.rb'
 require './lib/utilities.rb'
+require './lib/LDA/execute_LDA.rb'
 
 log = DataMapper::Logger.new($stdout, :debug)
 #err = DataMapper::Logger.new($stdout, :info)
@@ -24,7 +25,9 @@ while true do
   log << "\n***\n= getting entries of seed co-authors =\n***\n"
   candidate_entries = entries_of(seed_co_authors)
   log << candidate_entries.map{ |x| x.title }.join(', ')
-
+	f = File.open("lib/LDA/data/input/lda-seed-input-1.yml","w")
+	f.puts candidate_entries.to_yaml
+	f.close
   log << "\n***\n= calling train lda =\n***\n"
   lda_model = train_lda(seed_entries)
 
