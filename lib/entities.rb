@@ -38,7 +38,10 @@ class Entry
   has n, :authors, :through => Resource
 
   has n, :citations, :child_key => [ :source_id ]
-  has n, :entries, self, :through => :citations, :via => :target
+  has n, :citation_entries, self, :through => :citations, :via => :target
+
+  has n, :citations2, :model => "Citation", :child_key => [ :target_id ]
+  has n, :references, self, :through => :citations2, :via => :source
 end
 
 class Citation
