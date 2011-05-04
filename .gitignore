@@ -2,3 +2,5 @@
 CoAuthorNetwork.txt
 /log/*
 /data/**/*
+/lib/citation_distance/data/output/
+/lib/citation_distance/data/input/seed_candidate_pairs.txt
