@@ -38,9 +38,9 @@ while true do
   #log << candidate_entries.map{ |x| x.title }.join(', ')
   log << "candidate papers: #{candidate_entries.size}"
   File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_a.to_yaml }
-  
+
   #LDA scoring
-  log << "\n***\n= calling train lda =\n***\n"
+  log << "\n***\n= calling lda =\n***\n"
   execute_LDA(INPUT_FOR_LDA, CANDIDATES_FOR_LDA, OUTPUT_FROM_LDA)
   
   # Citation Network Score
@@ -49,9 +49,10 @@ while true do
   write_seed_candidate_pairs(seed_entries,candidate_entries,CITATION_DISTANCE_INPUT)
   log << "\n***\n= done.. calculating distances =\n***\n"
   execute_citation_distance_scorer(CITATION_DISTANCE_GRAPH_EDGE, CITATION_DISTANCE_INPUT, CITATION_DISTANCE_OUTPUT)
+  
   log << "\n***\n= getting ready to start scoring =\n***\n"
   score_vectors = {}
-
+  exit
   candidate_entries.each do |entry|
     # Co-Author Score
     score_3 = seed_entries.map do |seed|
