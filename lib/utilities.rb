@@ -1,7 +1,7 @@
 TIME_STAMP = Time.new.strftime("%Y-%m-%d-%H-%M-%S")
 ERR        = "./log/err-#{TIME_STAMP}.txt"
 LOG        = "./log/log-#{TIME_STAMP}.txt"
-CONNECTION = 'mysql://jrm425:verysecretpassword@192.168.37.2/ICSSND'
+CONNECTION = 'mysql://root@127.0.0.1:3306/ICSSND'
 
 def authors_of(entries)
   entries.inject(Set.new) { |authors, entry| authors | entry.authors }
@@ -12,7 +12,12 @@ def co_authors_of(authors)
 end
 
 def entries_of(authors)
-  authors.inject(Set.new) { |entries, author| entries | author.entries }
+  ret = Set.new
+  authors.each do |author|
+    ret |= author.entries
+    p author.name
+  end
+  return ret
 end
 
 def has_converged
