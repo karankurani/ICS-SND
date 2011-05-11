@@ -15,14 +15,15 @@ OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 CITATION_DISTANCE_GRAPH_EDGE = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/graph_edge.txt"))
 CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/seed_candidate_pairs.txt"))
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
-BIPART_OUT = File.expand_path(File.join(File.dirname(__FILE__),"../data/output/bipart-out.txt"))
 
 $log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit => 1)
+seed_entries = Entry.all(:isSeed => true)
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
-
+iteration_number = 1
 while true do
+  iter_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/iter-out-{#iteration_number}.txt"))
+  bipart_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/bipart-out-{#iteration_number}.txt"))
   $log << "\n***\n= getting authors =\n***\n"
   seed_authors = authors_of(seed_entries)
 
@@ -89,13 +90,18 @@ while true do
     end
   end
   seed_entries |= temp_entries
-  File.open(BIPART_OUT, "w") do |f|
+  File.open(bipart_out, "w") do |f|
     seed_entries.each do |entry|
       entry.citation_entries.each do |cit|
-        f.puts "#{entry.id} #{cit.id}"
+        f.puts "#{entry.id} #{cit.id}" if seed_entries.include? cit
       end
     end
   end
-  exit
+  File.open(iter_out, "w") do |f|
+    seed_entries.each do |entry|
+        f.puts "#{entry.id}"
+    end
+  end
+  iteration_number += 1
 end
 $log << "End."
