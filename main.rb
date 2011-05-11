@@ -15,9 +15,10 @@ OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 CITATION_DISTANCE_GRAPH_EDGE = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/graph_edge.txt"))
 CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/seed_candidate_pairs.txt"))
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
+BIPART_OUT = File.expand_path(File.join(File.dirname(__FILE__),"../data/output/bipart-out.txt"))
 
 $log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true)
+seed_entries = Entry.all(:isSeed => true, :limit => 1)
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
 
@@ -88,5 +89,13 @@ while true do
     end
   end
   seed_entries |= temp_entries
+  File.open(BIPART_OUT, "w") do |f|
+    seed_entries.each do |entry|
+      entry.citation_entries.each do |cit|
+        f.puts "#{entry.id} #{cit.id}"
+      end
+    end
+  end
+  exit
 end
 $log << "End."
