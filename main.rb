@@ -82,14 +82,15 @@ while true do
     score_4 = seed_entries.map do |seed|
       (seed.citation_entries.include? entry) ? 1 : 0
     end.reduce(:+)
-    if scores_are_good_enough({:score_1 => score_1,
-                               :score_2 => score_2,
-                               :score_3 => score_3,
-                               :score_4 => score_4})
+    if total_score({:score_1 => score_1,
+                   :score_2 => score_2,
+                   :score_3 => score_3,
+                   :score_4 => score_4}) > 2
       temp_entries << entry
     end
   end
   seed_entries |= temp_entries
+  
   File.open(bipart_out, "w") do |f|
     seed_entries.each do |entry|
       entry.citation_entries.each do |cit|
@@ -97,11 +98,13 @@ while true do
       end
     end
   end
+  
   File.open(iter_out, "w") do |f|
     seed_entries.each do |entry|
         f.puts "#{entry.id}"
     end
   end
   iteration_number += 1
+  
 end
 $log << "End."
