@@ -63,7 +63,7 @@ while true do
     score_1 = nil
     unless lda_entry.nil?
       score_1 = lda_entry.value["divergence"]
-      score_1 = score_1.to_i unless score_1.nil?
+      score_1 = score_1.to_f unless score_1.nil?
     end
 
     # Citation Score
