@@ -19,6 +19,7 @@ CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./
 $log << "Starting ..."
 seed_entries = Entry.all(:isSeed => true, :limit => 2)
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
+evaluated_authors = []
 
 while true do
   $log << "\n***\n= getting authors =\n***\n"
@@ -27,7 +28,9 @@ while true do
   $log << seed_authors.map{ |x| x.name }.join(', ')
 
   $log << "\n***\n= getting co-authors =\n***\n"
-  seed_co_authors = co_authors_of(seed_authors)
+  seed_co_authors = co_authors_of(seed_authors).to_a.shuffle.first(100)
+  seed_co_authors.reject! { |coa| evaluated_authors.contains? coa }
+  evaluated_authors |= seed_co_authors
   #$log << seed_co_authors.map{ |x| x.name }.join(', ')
   $log << "count of co-authors: #{seed_co_authors.size}"
 
