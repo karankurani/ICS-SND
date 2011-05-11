@@ -17,7 +17,7 @@ CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./l
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
 
 $log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit => 2)
+seed_entries = Entry.all(:isSeed => true)
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
 
@@ -29,7 +29,7 @@ while true do
 
   $log << "\n***\n= getting co-authors =\n***\n"
   seed_co_authors = co_authors_of(seed_authors).to_a.shuffle.first(100)
-  seed_co_authors.reject! { |coa| evaluated_authors.contains? coa }
+  seed_co_authors.reject! { |coa| evaluated_authors.include? coa }
   evaluated_authors |= seed_co_authors
   #$log << seed_co_authors.map{ |x| x.name }.join(', ')
   $log << "count of co-authors: #{seed_co_authors.size}"
@@ -56,7 +56,7 @@ while true do
   execute_citation_distance_scorer(CITATION_DISTANCE_GRAPH_EDGE, CITATION_DISTANCE_INPUT, CITATION_DISTANCE_OUTPUT)
   citation_distance_scores = find_min_seed_cand_dist(CITATION_DISTANCE_OUTPUT)
   
-  score_vectors = {}
+  temp_entries = []
   candidate_entries.each do |entry|
     # LDA Score
     lda_entry = lda_scores.find { |x| x.value["id"] == entry.id.to_s }
@@ -80,18 +80,13 @@ while true do
     score_4 = seed_entries.map do |seed|
       (seed.citation_entries.include? entry) ? 1 : 0
     end.reduce(:+)
-   score_vectors[entry] =
-   {:score_1 => score_1,
-    :score_2 => score_2,
-    :score_3 => score_3,
-    :score_4 => score_4}
-    puts "#{score_vectors.size}/#{candidate_entries.size}"
-  end
-  
-  score_vectors.each_pair do |entry, scores|
-    if scores_are_good_enough(scores)
-      seed_entries << entries
+    if scores_are_good_enough({:score_1 => score_1,
+                               :score_2 => score_2,
+                               :score_3 => score_3,
+                               :score_4 => score_4})
+      temp_entries << entry
     end
   end
+  seed_entries |= temp_entries
 end
 $log << "End."
