@@ -15,15 +15,15 @@ OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 CITATION_DISTANCE_GRAPH_EDGE = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/graph_edge.txt"))
 CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/seed_candidate_pairs.txt"))
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
-
 $log << "Starting ..."
 seed_entries = Entry.all(:isSeed => true)
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
 iteration_number = 1
 while true do
-  iter_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/iter-out-{#iteration_number}.txt"))
-  bipart_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/bipart-out-{#iteration_number}.txt"))
+  GC.enable
+  iter_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/iter-out-#{iteration_number}.txt"))
+  bipart_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/bipart-out-#{iteration_number}.txt"))
   $log << "\n***\n= getting authors =\n***\n"
   seed_authors = authors_of(seed_entries)
 
@@ -42,7 +42,7 @@ while true do
   $log << "candidate papers: #{candidate_entries.size}"
 
   $log << "\n***\n= getting ready to start scoring =\n***\n"
-  
+  p "GC called: #{GC.count}"
   #LDA scoring
   File.open(CANDIDATES_FOR_LDA, "w") { |f| f.puts candidate_entries.to_a.to_yaml }
   $log << "\n***\n= calling lda =\n***\n"
@@ -59,7 +59,10 @@ while true do
   citation_distance_scores = find_min_seed_cand_dist(CITATION_DISTANCE_OUTPUT)
   
   temp_entries = []
+  count_of_papers = 1
+  GC.disable
   candidate_entries.each do |entry|
+    p "GC called: #{GC.count}"
     # LDA Score
     lda_entry = lda_scores.find { |x| x.value["id"] == entry.id.to_s }
     score_1 = nil
@@ -87,6 +90,13 @@ while true do
                    :score_3 => score_3,
                    :score_4 => score_4}) > 2
       temp_entries << entry
+    end
+    count_of_papers += 1
+    if(count_of_papers % 100 == 0)
+      p "#{count_of_papers}/#{candidate_entries.size}"
+      GC.enable
+      GC.start
+      GC.disable
     end
   end
   seed_entries |= temp_entries
