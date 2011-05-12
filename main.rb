@@ -15,11 +15,14 @@ OUTPUT_FROM_LDA    = File.expand_path(File.join(File.dirname(__FILE__),"./lib/LD
 CITATION_DISTANCE_GRAPH_EDGE = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/graph_edge.txt"))
 CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/input/seed_candidate_pairs.txt"))
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
+
 $log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true)
+seed_entries = Entry.all(:isSeed => true, :limit=>1)
+
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
 iteration_number = 1
+
 while true do
   GC.enable
   iter_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/iter-out-#{iteration_number}.txt"))
@@ -62,52 +65,42 @@ while true do
   count_of_papers = 1
   GC.disable
   candidate_entries.each do |entry|
-    p "GC called: #{GC.count}"
+    cloned_entry = entry.clone
+    #p "GC called: #{GC.count}"
     # LDA Score
-    lda_entry = lda_scores.find { |x| x.value["id"] == entry.id.to_s }
-    score_1 = nil
-    unless lda_entry.nil?
-      score_1 = lda_entry.value["divergence"]
-      score_1 = score_1.to_f unless score_1.nil?
-    end
+    score_1 = get_lda_score(lda_scores,cloned_entry)
 
     # Citation Score
-    citation_score = citation_distance_scores[entry.id.to_s]
-    score_2 = nil
-    score_2 = citation_score.to_i unless citation_score.nil?
+    score_2 = get_citation_distance_score(citation_distance_scores,cloned_entry)
 
     # Co-Author Score
-    score_3 = seed_entries.map do |seed|
-      (co_authors_of(entry.authors) & seed.authors).size
-    end.reduce(:+)
+    score_3 = get_co_author_score(seed_entries, cloned_entry)
 
     # Reference Score
-    score_4 = seed_entries.map do |seed|
-      (seed.citation_entries.include? entry) ? 1 : 0
-    end.reduce(:+)
+    score_4 = get_reference_score(seed_entries, cloned_entry)
+
     if total_score({:score_1 => score_1,
                    :score_2 => score_2,
                    :score_3 => score_3,
                    :score_4 => score_4}) > 2
-      temp_entries << entry
+      temp_entries << cloned_entry
     end
+
     count_of_papers += 1
     if(count_of_papers % 100 == 0)
-      p "#{count_of_papers}/#{candidate_entries.size}"
-      if(GC.disable)
-        GC.enable
-      else
-        GC.disable
-      end  
+      puts "#{count_of_papers}/#{candidate_entries.size}"
+      GC.enable
+      GC.start
+      GC.disable
     end
+    cloned_entry = nil
   end
+  GC.enable
   seed_entries |= temp_entries  
 
   temp_entries = nil
   citation_distance_scores = nil
   candidate_entries = nil
-  GC.enable
-  GC.start
     
   File.open(bipart_out, "w") do |f|
     seed_entries.each do |entry|
