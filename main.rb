@@ -19,11 +19,11 @@ CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./
 $log << "Starting ..."
 seed_entries = Entry.all(:isSeed => true)
 
-File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
 iteration_number = 1
 
 while true do
+  File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
   GC.enable
   iter_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/iter-out-#{iteration_number}.txt"))
   bipart_out = File.expand_path(File.join(File.dirname(__FILE__),"./data/output/bipart-out-#{iteration_number}.txt"))
