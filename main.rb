@@ -94,13 +94,21 @@ while true do
     count_of_papers += 1
     if(count_of_papers % 100 == 0)
       p "#{count_of_papers}/#{candidate_entries.size}"
-      GC.enable
-      GC.start
-      GC.disable
+      if(GC.disable)
+        GC.enable
+      else
+        GC.disable
+      end  
     end
   end
-  seed_entries |= temp_entries
-  
+  seed_entries |= temp_entries  
+
+  temp_entries = nil
+  citation_distance_scores = nil
+  candidate_entries = nil
+  GC.enable
+  GC.start
+    
   File.open(bipart_out, "w") do |f|
     seed_entries.each do |entry|
       entry.citation_entries.each do |cit|
