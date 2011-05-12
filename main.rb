@@ -17,7 +17,7 @@ CITATION_DISTANCE_INPUT = File.expand_path(File.join(File.dirname(__FILE__),"./l
 CITATION_DISTANCE_OUTPUT = File.expand_path(File.join(File.dirname(__FILE__),"./lib/citation_distance/data/output/seed_candidate_pairs_distances.txt"))
 
 $log << "Starting ..."
-seed_entries = Entry.all(:isSeed => true, :limit=>1)
+seed_entries = Entry.all(:isSeed => true)
 
 File.open(INPUT_FOR_LDA, "w") {|f| f.puts seed_entries.to_yaml }
 evaluated_authors = []
@@ -66,7 +66,7 @@ while true do
   GC.disable
   candidate_entries.each do |entry|
     cloned_entry = entry.clone
-    #p "GC called: #{GC.count}"
+
     # LDA Score
     score_1 = get_lda_score(lda_scores,cloned_entry)
 
@@ -92,6 +92,7 @@ while true do
       GC.enable
       GC.start
       GC.disable
+      puts "GC called: #{GC.count}"
     end
     cloned_entry = nil
   end
